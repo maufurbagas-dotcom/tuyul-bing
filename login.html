@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LOGIN | TUYUL BING</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: #0d1117;
+    font-family: 'Rajdhani', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    background-image: radial-gradient(ellipse at 50% 0%, #0f2235 0%, #0d1117 60%);
+  }
+
+  .box {
+    background: #161d27;
+    border: 1px solid #1e2a38;
+    border-radius: 18px;
+    padding: 44px 32px 36px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 0 80px rgba(0,200,232,0.07);
+  }
+
+  .logo {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #d4a017;
+    letter-spacing: 4px;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+
+  .sub {
+    text-align: center;
+    font-size: 0.66rem;
+    letter-spacing: 3px;
+    color: #556070;
+    margin-bottom: 32px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .section-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    color: #00c8e8;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .field { margin-bottom: 18px; }
+
+  label {
+    display: block;
+    font-size: 0.66rem;
+    letter-spacing: 3px;
+    color: #556070;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  input {
+    background: #0d1117;
+    border: 1px solid #1e2a38;
+    border-radius: 8px;
+    color: #c8d6e5;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 12px 14px;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  input:focus { border-color: #00c8e8; }
+
+  .err {
+    color: #e84040;
+    font-size: 0.78rem;
+    font-weight: 600;
+    min-height: 22px;
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+    display: block;
+  }
+
+  .btn {
+    background: #00c8e8;
+    color: #0d1117;
+    font-family: 'Orbitron', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: opacity 0.2s, transform 0.1s;
+  }
+  .btn:hover { opacity: 0.85; }
+  .btn:active { transform: scale(0.98); }
+
+  .hint {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 0.68rem;
+    color: #2a3a4a;
+    letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+<div class="box">
+  <div class="logo">TUYUL BING</div>
+  <div class="sub">BAGAS JADI PRABU</div>
+  <div class="section-title">LOGIN</div>
+
+  <div class="field">
+    <label>USERNAME</label>
+    <input type="text" id="u" placeholder="masukkan username" autocomplete="off" autofocus>
+  </div>
+  <div class="field">
+    <label>PASSWORD</label>
+    <input type="password" id="p" placeholder="masukkan password">
+  </div>
+
+  <span class="err" id="err"></span>
+  <button class="btn" onclick="login()">LOGIN</button>
+  <div class="hint">© TUYUL BING — BAGAS JADI PRABU</div>
+</div>
+
+<script>
+  // Kalau sudah login, langsung ke dashboard
+  if (sessionStorage.getItem('tbUser')) window.location.href = 'dashboard.html';
+
+  const USERS = [
+    { u: 'Bagas',      p: 'admin'     },
+    { u: 'bing lokal', p: 'lokalbing' }
+  ];
+
+  function login() {
+    const u = document.getElementById('u').value.trim();
+    const p = document.getElementById('p').value;
+    const found = USERS.find(x => x.u.toLowerCase() === u.toLowerCase() && x.p === p);
+    if (found) {
+      sessionStorage.setItem('tbUser', found.u);
+      window.location.href = 'dashboard.html';
+    } else {
+      document.getElementById('err').textContent = '✖ Username atau password salah!';
+      document.getElementById('p').value = '';
+      document.getElementById('p').focus();
+    }
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
+</script>
+</body>
+</html>

@@ -2,675 +2,184 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>TUYUL BING</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0b0f18;--surf:#131b28;--card:#141e2e;--bdr:#1f2e44;
+  --cyan:#00d4f5;--green:#00e87a;--gold:#f0a500;--red:#ff4455;
+  --text:#cdd8ea;--muted:#4a5c72;--dim:#1a2738;
+}
+html,body{height:100%;width:100%;overflow:hidden}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column;-webkit-tap-highlight-color:transparent}
 
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+/* TOP BAR */
+.topbar{flex-shrink:0;background:#0e1626;border-bottom:1px solid var(--bdr);text-align:center;padding:14px 16px 12px;position:relative;z-index:20}
+.topbar::after{content:'';position:absolute;bottom:-1px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.app-title{font-size:1.3rem;font-weight:900;color:var(--gold);letter-spacing:5px;text-transform:uppercase}
+.app-sub{font-size:0.58rem;font-weight:700;letter-spacing:4px;color:var(--green);text-transform:uppercase;margin-top:2px;text-shadow:0 0 10px rgba(0,232,122,.45)}
 
-:root {
-  --bg:      #0b0f18;
-  --surface: #131b28;
-  --card:    #162030;
-  --border:  #1f2e42;
-  --cyan:    #00cfee;
-  --green:   #00e87a;
-  --gold:    #f0a500;
-  --orange:  #f09000;
-  --red:     #ff4455;
-  --text:    #d0dcea;
-  --muted:   #4d6070;
-  --dim:     #1a2535;
-}
+/* WELCOME */
+.wbar{flex-shrink:0;background:#0c1420;border-bottom:1px solid var(--bdr);padding:8px 16px;text-align:center;font-size:0.75rem;font-weight:600;color:var(--cyan);letter-spacing:.5px;z-index:19}
 
-html, body { height: 100%; overflow: hidden; }
+/* POPUP WARN */
+.pw{flex-shrink:0;background:#1a1100;border-bottom:1px solid #3a2800;padding:8px 14px;text-align:center;font-size:.68rem;font-weight:600;color:var(--gold);display:none}
+.pw.on{display:block}
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  -webkit-tap-highlight-color: transparent;
-  overflow: hidden;
-}
+/* SCROLL AREA */
+.content{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;padding:14px 14px 10px;display:flex;flex-direction:column;gap:12px;min-height:0}
 
-/* ─── HEADER ─── */
-.hdr {
-  background: linear-gradient(180deg, #101828 0%, #0b0f18 100%);
-  border-bottom: 1px solid var(--border);
-  padding: 18px 20px 14px;
-  text-align: center;
-  flex-shrink: 0;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-.hdr::after {
-  content: '';
-  position: absolute;
-  bottom: -1px; left: 8%; right: 8%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
-}
-.hdr-title {
-  font-size: 1.35rem;
-  font-weight: 900;
-  color: var(--gold);
-  letter-spacing: 5px;
-  text-transform: uppercase;
-}
-.hdr-sub {
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 4px;
-  color: var(--green);
-  margin-top: 3px;
-  text-transform: uppercase;
-  text-shadow: 0 0 12px rgba(0,232,122,0.4);
-}
+/* ENGINE CARD */
+.ecard{background:var(--card);border:1.5px solid var(--bdr);border-radius:16px;overflow:visible;transition:border-color .3s,box-shadow .3s;width:100%}
+.ecard.on{border-color:rgba(0,212,245,.5);box-shadow:0 0 22px rgba(0,212,245,.07)}
+.ecard.on.bing{border-color:rgba(0,232,122,.5);box-shadow:0 0 22px rgba(0,232,122,.07)}
+.ecard.running{border-color:rgba(0,212,245,.75);box-shadow:0 0 28px rgba(0,212,245,.12)}
+.ecard.running.bing{border-color:rgba(0,232,122,.75);box-shadow:0 0 28px rgba(0,232,122,.12)}
+.ecard.done{border-color:rgba(0,232,122,.55)}
 
-/* ─── WELCOME ─── */
-.welcome {
-  background: #0d1520;
-  border-bottom: 1px solid var(--border);
-  padding: 9px 20px;
-  text-align: center;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  color: var(--cyan);
-  flex-shrink: 0;
-  position: sticky;
-  top: 0;
-  z-index: 9;
-}
+/* CARD HEAD */
+.chead{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:rgba(0,0,0,.2);border-bottom:1px solid var(--bdr);border-radius:16px 16px 0 0;gap:10px}
+.brow{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.badge{font-size:.68rem;font-weight:700;letter-spacing:1.5px;padding:5px 14px;border-radius:30px;text-transform:uppercase;border:1.5px solid rgba(0,212,245,.3);background:rgba(0,212,245,.08);color:var(--cyan);white-space:nowrap;transition:all .3s}
+.bing .badge{border-color:rgba(0,232,122,.3);background:rgba(0,232,122,.08);color:var(--green)}
+.ecard.on .badge{background:rgba(0,212,245,.15);border-color:var(--cyan)}
+.ecard.on.bing .badge{background:rgba(0,232,122,.15);border-color:var(--green)}
+.olbl{font-size:.62rem;font-weight:700;letter-spacing:1.5px;color:var(--muted);transition:color .3s;text-transform:uppercase}
+.ecard.on .olbl{color:var(--cyan)} .ecard.on.bing .olbl{color:var(--green)}
 
-/* ─── POPUP WARN ─── */
-.pw {
-  background: #1a1000;
-  border-bottom: 1px solid #3a2500;
-  padding: 9px 16px;
-  text-align: center;
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: var(--gold);
-  display: none;
-  flex-shrink: 0;
-}
-.pw.show { display: block; }
+/* TOGGLE */
+.tpill{width:52px;height:28px;border-radius:14px;background:#1c2b3e;border:1.5px solid #263848;position:relative;cursor:pointer;flex-shrink:0;transition:all .3s}
+.tpill::after{content:'';position:absolute;width:20px;height:20px;background:var(--muted);border-radius:50%;top:3px;left:3px;transition:transform .28s cubic-bezier(.4,0,.2,1),background .28s;box-shadow:0 1px 4px rgba(0,0,0,.5)}
+.ecard.on .tpill{background:rgba(0,212,245,.2);border-color:var(--cyan);box-shadow:0 0 12px rgba(0,212,245,.3)}
+.ecard.on .tpill::after{transform:translateX(24px);background:var(--cyan);box-shadow:0 0 8px rgba(0,212,245,.7)}
+.ecard.on.bing .tpill{background:rgba(0,232,122,.2);border-color:var(--green);box-shadow:0 0 12px rgba(0,232,122,.3)}
+.ecard.on.bing .tpill::after{background:var(--green);box-shadow:0 0 8px rgba(0,232,122,.7)}
 
-/* ─── SCROLLABLE MAIN ─── */
-main {
-  flex: 1;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
-  padding: 18px 16px 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  max-width: 540px;
-  margin: 0 auto;
-  width: 100%;
-  min-height: 0;
-}
+/* CARD BODY */
+.cbody{padding:16px;transition:opacity .3s}
+.ecard:not(.on) .cbody{opacity:.28;pointer-events:none;user-select:none}
 
-/* ─── ENGINE CARD ─── */
-.ecard {
-  background: var(--card);
-  border-radius: 18px;
-  border: 1.5px solid var(--border);
-  overflow: hidden;
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-.ecard.is-on {
-  border-color: rgba(0,207,238,0.4);
-}
-.ecard.is-on.bing {
-  border-color: rgba(0,232,122,0.4);
-}
-.ecard.is-running {
-  border-color: rgba(0,207,238,0.7);
-  box-shadow: 0 0 28px rgba(0,207,238,0.1);
-}
-.ecard.is-running.bing {
-  border-color: rgba(0,232,122,0.7);
-  box-shadow: 0 0 28px rgba(0,232,122,0.1);
-}
-.ecard.is-done {
-  border-color: rgba(0,232,122,0.6);
-  box-shadow: 0 0 20px rgba(0,232,122,0.08);
-}
+/* LABELS */
+.flbl{display:block;font-size:.62rem;font-weight:700;letter-spacing:2px;color:var(--muted);margin-bottom:7px;text-transform:uppercase}
 
-/* ─── CARD HEAD ─── */
-.chead {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 20px;
-  background: rgba(0,0,0,0.25);
-  border-bottom: 1px solid var(--border);
-}
-.badge-row { display: flex; align-items: center; gap: 10px; }
+/* BIG INPUT */
+.bi{display:block;width:100%;background:var(--surf);border:1.5px solid var(--bdr);border-radius:12px;color:var(--text);font-family:'Poppins',sans-serif;font-size:1.25rem;font-weight:700;padding:13px 16px;outline:none;transition:border-color .2s,box-shadow .2s;-moz-appearance:textfield;-webkit-appearance:none;appearance:none;caret-color:var(--cyan)}
+.bi::-webkit-outer-spin-button,.bi::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.bi:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,212,245,.1)}
+.bing .bi:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(0,232,122,.1)}
+.bi:disabled{opacity:.4;cursor:not-allowed}
 
-.badge {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  padding: 6px 16px;
-  border-radius: 30px;
-  text-transform: uppercase;
-  background: rgba(0,207,238,0.1);
-  color: var(--cyan);
-  border: 1.5px solid rgba(0,207,238,0.3);
-  transition: background 0.3s, border-color 0.3s;
-}
-.bing .badge {
-  background: rgba(0,232,122,0.1);
-  color: var(--green);
-  border-color: rgba(0,232,122,0.3);
-}
-.ecard.is-on .badge {
-  background: rgba(0,207,238,0.18);
-  border-color: var(--cyan);
-}
-.ecard.is-on.bing .badge {
-  background: rgba(0,232,122,0.18);
-  border-color: var(--green);
-}
+/* MIN MAX ROW */
+.mmrow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
 
-.onoff {
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  color: var(--muted);
-  transition: color 0.3s;
-  text-transform: uppercase;
-}
-.ecard.is-on .onoff         { color: var(--cyan); }
-.ecard.is-on.bing .onoff    { color: var(--green); }
+/* STEPPER */
+.stepper{display:flex;align-items:stretch;background:var(--surf);border:1.5px solid var(--bdr);border-radius:10px;overflow:hidden;transition:border-color .2s,box-shadow .2s;height:46px}
+.stepper:focus-within{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,212,245,.1)}
+.bing .stepper:focus-within{border-color:var(--green);box-shadow:0 0 0 3px rgba(0,232,122,.1)}
+.sb{width:38px;flex-shrink:0;background:var(--dim);color:var(--text);font-size:1.1rem;font-weight:700;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s;user-select:none;-webkit-tap-highlight-color:transparent}
+.sb:active{background:#253a52} .sb:disabled{opacity:.35;cursor:not-allowed}
+.si{flex:1;min-width:0;background:transparent;border:none;color:var(--text);font-family:'Poppins',sans-serif;font-size:.95rem;font-weight:700;text-align:center;outline:none;padding:0 2px;-moz-appearance:textfield;caret-color:var(--cyan)}
+.si::-webkit-outer-spin-button,.si::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.si:disabled{opacity:.4}
 
-/* toggle pill */
-.tpill {
-  width: 54px; height: 30px;
-  border-radius: 15px;
-  background: #1c2b3a;
-  border: 1.5px solid #263545;
-  position: relative;
-  cursor: pointer;
-  transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
-  flex-shrink: 0;
-  -webkit-tap-highlight-color: transparent;
-}
-.tpill::after {
-  content: '';
-  position: absolute;
-  width: 22px; height: 22px;
-  background: var(--muted);
-  border-radius: 50%;
-  top: 3px; left: 3px;
-  transition: transform 0.28s cubic-bezier(0.4,0,0.2,1), background 0.28s;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.5);
-}
-.ecard.is-on .tpill {
-  background: rgba(0,207,238,0.22);
-  border-color: var(--cyan);
-  box-shadow: 0 0 14px rgba(0,207,238,0.3);
-}
-.ecard.is-on .tpill::after {
-  transform: translateX(24px);
-  background: var(--cyan);
-  box-shadow: 0 0 10px rgba(0,207,238,0.6);
-}
-.ecard.is-on.bing .tpill {
-  background: rgba(0,232,122,0.22);
-  border-color: var(--green);
-  box-shadow: 0 0 14px rgba(0,232,122,0.3);
-}
-.ecard.is-on.bing .tpill::after {
-  background: var(--green);
-  box-shadow: 0 0 10px rgba(0,232,122,0.6);
-}
+/* STATUS */
+.stat{display:flex;align-items:center;gap:7px;font-size:.78rem;font-weight:500;color:var(--muted);margin:13px 0 9px;min-height:20px;transition:color .3s}
+.sdot{width:7px;height:7px;border-radius:50%;background:var(--muted);flex-shrink:0;transition:background .3s}
+.stat.live{color:var(--cyan)} .stat.live .sdot{background:var(--cyan);animation:blink 1s infinite}
+.bing .stat.live{color:var(--green)} .bing .stat.live .sdot{background:var(--green)}
+.stat.ok{color:var(--green)} .stat.ok .sdot{background:var(--green);animation:none}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
 
-/* ─── CARD BODY ─── */
-.cbody {
-  padding: 20px;
-  transition: opacity 0.3s;
-}
-.ecard:not(.is-on) .cbody {
-  opacity: 0.3;
-  pointer-events: none;
-  user-select: none;
-}
+/* PROGRESS */
+.prow{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px}
+.pnum{font-size:1.1rem;font-weight:800;color:var(--gold)}
+.pof{font-size:.68rem;font-weight:600;color:var(--muted)}
+.mlbl{font-size:.58rem;font-weight:700;letter-spacing:2px;color:var(--muted);text-transform:uppercase;transition:color .3s}
+.ecard.on .mlbl,.ecard.running .mlbl,.ecard.done .mlbl{color:var(--gold)}
+.bar{background:var(--dim);border-radius:5px;height:6px;overflow:hidden}
+.fill{height:100%;width:0%;border-radius:5px;background:linear-gradient(90deg,var(--cyan),#00afd0);transition:width .5s ease}
+.bing .fill{background:linear-gradient(90deg,var(--green),#00c060)}
 
-/* ─── FIELD LABEL ─── */
-.flbl {
-  display: block;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  color: var(--muted);
-  margin-bottom: 8px;
-  text-transform: uppercase;
-}
+/* SCROLL PREVIEW */
+.prev{display:none;background:rgba(0,0,0,.25);border:1px solid var(--bdr);border-radius:8px;height:60px;overflow:hidden;position:relative;margin-top:10px}
+.prev.on{display:block}
+.pi{position:absolute;width:100%;padding:9px 12px 0;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.pl{height:4px;border-radius:2px;background:var(--dim);margin-bottom:8px}
+.pl.s{width:38%}.pl.m{width:62%}.pl.l{width:86%}.pl.f{width:100%}
+.pcur{position:absolute;bottom:6px;right:9px;width:6px;height:6px;background:var(--cyan);border-radius:50%;animation:blink 1.1s infinite}
+.bing .pcur{background:var(--green)}
 
-/* ─── INPUT ─── */
-.inp {
-  width: 100%;
-  background: var(--surface);
-  border: 1.5px solid var(--border);
-  border-radius: 12px;
-  color: var(--text);
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.3rem;
-  font-weight: 600;
-  padding: 14px 18px;
-  outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  -moz-appearance: textfield;
-  -webkit-appearance: none;
-  appearance: none;
-  caret-color: var(--cyan);
-}
-.inp::-webkit-outer-spin-button,
-.inp::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-.inp:focus {
-  border-color: var(--cyan);
-  box-shadow: 0 0 0 3px rgba(0,207,238,0.12);
-}
-.bing .inp:focus {
-  border-color: var(--green);
-  box-shadow: 0 0 0 3px rgba(0,232,122,0.12);
-}
-.inp:disabled { opacity: 0.4; cursor: not-allowed; }
-.inp::placeholder { color: var(--muted); }
+/* LOG */
+.lcard{background:var(--card);border:1.5px solid var(--bdr);border-radius:14px;padding:12px 14px;width:100%}
+.ltitle{font-size:.6rem;font-weight:700;letter-spacing:2px;color:var(--muted);margin-bottom:8px;text-transform:uppercase}
+.lbox{max-height:80px;overflow-y:auto;font-size:.7rem;font-weight:500;line-height:1.7;color:var(--muted)}
+.lbox::-webkit-scrollbar{width:3px} .lbox::-webkit-scrollbar-thumb{background:var(--dim);border-radius:2px}
+.le{color:var(--muted)} .le.c{color:var(--cyan)} .le.g{color:var(--green)} .le.gold{color:var(--gold)} .le.r{color:var(--red)}
 
-/* ─── STEPPER ROW (tap +/- buttons) ─── */
-.step-row {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  background: var(--surface);
-  border: 1.5px solid var(--border);
-  border-radius: 10px;
-  overflow: hidden;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-.step-row:focus-within {
-  border-color: var(--cyan);
-  box-shadow: 0 0 0 3px rgba(0,207,238,0.12);
-}
-.bing .step-row:focus-within {
-  border-color: var(--green);
-  box-shadow: 0 0 0 3px rgba(0,232,122,0.12);
-}
-.step-btn {
-  width: 40px;
-  min-width: 40px;
-  height: 44px;
-  background: var(--dim);
-  color: var(--text);
-  font-size: 1.2rem;
-  font-weight: 700;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.15s;
-  flex-shrink: 0;
-  -webkit-tap-highlight-color: transparent;
-  user-select: none;
-}
-.step-btn:active { background: #2a3f58; }
-.step-btn:disabled { opacity: 0.3; cursor: not-allowed; }
-.step-inp {
-  flex: 1;
-  background: transparent;
-  border: none;
-  color: var(--text);
-  font-family: 'Poppins', sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  text-align: center;
-  padding: 11px 2px;
-  outline: none;
-  -moz-appearance: textfield;
-  caret-color: var(--cyan);
-}
-.step-inp::-webkit-outer-spin-button,
-.step-inp::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+/* FINISH */
+.fin{display:none;background:linear-gradient(135deg,#06180e,#06101a);border:1.5px solid rgba(0,232,122,.3);border-radius:14px;padding:18px 16px;text-align:center}
+.fin.on{display:block} .fin h3{font-size:.88rem;font-weight:800;color:var(--green);letter-spacing:1px;margin-bottom:4px} .fin p{font-size:.72rem;font-weight:500;color:var(--muted)}
 
-/* ─── MIN MAX ROW ─── */
-.mm-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-top: 14px;
-}
+/* FOOTER */
+footer{flex-shrink:0;background:var(--bg);border-top:1px solid var(--bdr);padding:12px 14px max(18px,env(safe-area-inset-bottom,18px));display:flex;flex-direction:column;gap:9px;z-index:20}
+.bmulai{display:none;width:100%;background:linear-gradient(135deg,#00c060,#009e50);color:#fff;font-family:'Poppins',sans-serif;font-size:.95rem;font-weight:800;letter-spacing:2px;padding:16px;border:none;border-radius:13px;cursor:pointer;text-transform:uppercase;box-shadow:0 4px 20px rgba(0,192,96,.25);transition:opacity .2s,transform .1s}
+.bmulai.on{display:block} .bmulai:hover{opacity:.9} .bmulai:active{transform:scale(.98)} .bmulai:disabled{background:#0d180f;color:#253520;cursor:not-allowed;box-shadow:none}
+.jrrow{display:none;grid-template-columns:1fr 1fr;gap:9px} .jrrow.on{display:grid}
+.bjeda{background:linear-gradient(135deg,#d08000,#b06800);color:#fff;font-family:'Poppins',sans-serif;font-size:.9rem;font-weight:800;letter-spacing:2px;padding:15px;border:none;border-radius:13px;cursor:pointer;text-transform:uppercase;box-shadow:0 4px 16px rgba(208,128,0,.25);transition:opacity .2s,transform .1s}
+.bjeda:active{transform:scale(.97)} .bjeda.paused{background:linear-gradient(135deg,#0060a0,#004a80);box-shadow:0 4px 16px rgba(0,96,160,.25)}
+.breset{background:var(--surf);color:var(--text);font-family:'Poppins',sans-serif;font-size:.9rem;font-weight:800;letter-spacing:2px;padding:15px;border:1.5px solid var(--bdr);border-radius:13px;cursor:pointer;text-transform:uppercase;transition:background .2s,transform .1s}
+.breset:hover{background:#1c2c3e} .breset:active{transform:scale(.97)}
+.blogout{display:block;width:100%;background:transparent;color:var(--red);font-family:'Poppins',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:2px;padding:14px;border:1.5px solid rgba(255,68,85,.35);border-radius:13px;cursor:pointer;text-transform:uppercase;transition:background .2s,border-color .2s,transform .1s}
+.blogout:hover{background:rgba(255,68,85,.06);border-color:var(--red)} .blogout:active{transform:scale(.98)}
 
-/* ─── STATUS ─── */
-.stat {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--muted);
-  margin: 16px 0 10px;
-  min-height: 22px;
-  transition: color 0.3s;
-}
-.sdot {
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: var(--muted);
-  flex-shrink: 0;
-  transition: background 0.3s;
-}
-.stat.live { color: var(--cyan); }
-.stat.live .sdot { background: var(--cyan); animation: pulse 1s infinite; }
-.bing .stat.live { color: var(--green); }
-.bing .stat.live .sdot { background: var(--green); }
-.stat.ok { color: var(--green); }
-.stat.ok .sdot { background: var(--green); animation: none; }
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.15} }
-
-/* ─── PROGRESS ─── */
-.prog-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 8px;
-}
-.prog-num {
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: var(--gold);
-}
-.prog-of {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--muted);
-}
-.mis-lbl {
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  color: var(--muted);
-  text-transform: uppercase;
-  transition: color 0.3s;
-}
-.ecard.is-on .mis-lbl,
-.ecard.is-running .mis-lbl,
-.ecard.is-done .mis-lbl { color: var(--gold); }
-
-.bar {
-  background: var(--dim);
-  border-radius: 6px;
-  height: 6px;
-  overflow: hidden;
-}
-.fill {
-  height: 100%;
-  width: 0%;
-  border-radius: 6px;
-  transition: width 0.5s ease;
-  background: linear-gradient(90deg, var(--cyan), #00a8c8);
-}
-.bing .fill { background: linear-gradient(90deg, var(--green), #00b85e); }
-
-/* ─── SCROLL PREVIEW ─── */
-.prev {
-  display: none;
-  background: rgba(0,0,0,0.3);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  height: 68px;
-  overflow: hidden;
-  position: relative;
-  margin-top: 12px;
-}
-.prev.on { display: block; }
-.pi {
-  position: absolute;
-  width: 100%;
-  padding: 10px 14px 0;
-  transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
-}
-.pl {
-  height: 4px; border-radius: 2px;
-  background: var(--dim); margin-bottom: 9px;
-}
-.pl.s { width: 38%; }
-.pl.m { width: 65%; }
-.pl.l { width: 88%; }
-.pl.f { width: 100%; }
-.pcursor {
-  position: absolute; bottom: 7px; right: 10px;
-  width: 6px; height: 6px;
-  background: var(--cyan); border-radius: 50%;
-  animation: pulse 1.1s infinite;
-}
-.bing .pcursor { background: var(--green); }
-
-/* ─── LOG ─── */
-.log-card {
-  background: var(--card);
-  border: 1.5px solid var(--border);
-  border-radius: 16px;
-  padding: 14px 16px;
-}
-.log-title {
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  color: var(--muted);
-  margin-bottom: 8px;
-  text-transform: uppercase;
-}
-.logbox {
-  max-height: 90px;
-  overflow-y: auto;
-  font-size: 0.73rem;
-  font-weight: 500;
-  color: var(--muted);
-  line-height: 1.7;
-}
-.logbox::-webkit-scrollbar { width: 3px; }
-.logbox::-webkit-scrollbar-thumb { background: var(--dim); border-radius: 2px; }
-.le      { color: var(--muted); }
-.le.c    { color: var(--cyan); }
-.le.g    { color: var(--green); }
-.le.gold { color: var(--gold); }
-.le.r    { color: var(--red); }
-
-/* ─── FINISH ─── */
-.fin {
-  display: none;
-  background: linear-gradient(135deg, #061a10, #06101a);
-  border: 1.5px solid rgba(0,232,122,0.35);
-  border-radius: 16px;
-  padding: 20px;
-  text-align: center;
-}
-.fin.on { display: block; }
-.fin h3 {
-  font-size: 0.9rem;
-  font-weight: 800;
-  color: var(--green);
-  letter-spacing: 1px;
-  margin-bottom: 4px;
-}
-.fin p { font-size: 0.75rem; font-weight: 500; color: var(--muted); }
-
-/* ─── FOOTER ─── */
-footer {
-  flex-shrink: 0;
-  background: var(--bg);
-  border-top: 1px solid var(--border);
-  padding: 14px 16px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  position: sticky;
-  bottom: 0;
-  z-index: 10;
-}
-
-/* MULAI MISI full width */
-.btn-mulai {
-  width: 100%;
-  background: linear-gradient(135deg, #00c060, #009e50);
-  color: #fff;
-  font-family: 'Poppins', sans-serif;
-  font-size: 1rem;
-  font-weight: 800;
-  letter-spacing: 2px;
-  padding: 17px;
-  border: none;
-  border-radius: 14px;
-  cursor: pointer;
-  text-transform: uppercase;
-  transition: opacity 0.2s, transform 0.1s;
-  box-shadow: 0 4px 20px rgba(0,192,96,0.25);
-  display: none;
-}
-.btn-mulai:hover { opacity: 0.92; }
-.btn-mulai:active { transform: scale(0.98); }
-.btn-mulai:disabled {
-  background: #0e1a12;
-  color: #2a4030;
-  cursor: not-allowed;
-  box-shadow: none;
-}
-.btn-mulai.show { display: block; }
-
-/* JEDA + RESET row */
-.jr-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  display: none;
-}
-.jr-row.show { display: grid; }
-
-.btn-jeda {
-  background: linear-gradient(135deg, #d48000, #b86c00);
-  color: #fff;
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 800;
-  letter-spacing: 2px;
-  padding: 16px;
-  border: none;
-  border-radius: 14px;
-  cursor: pointer;
-  text-transform: uppercase;
-  transition: opacity 0.2s, transform 0.1s;
-  box-shadow: 0 4px 16px rgba(212,128,0,0.25);
-}
-.btn-jeda:active { transform: scale(0.97); }
-.btn-jeda.paused {
-  background: linear-gradient(135deg, #0060a0, #004880);
-  box-shadow: 0 4px 16px rgba(0,96,160,0.25);
-}
-
-.btn-reset {
-  background: var(--surface);
-  color: var(--text);
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 800;
-  letter-spacing: 2px;
-  padding: 16px;
-  border: 1.5px solid var(--border);
-  border-radius: 14px;
-  cursor: pointer;
-  text-transform: uppercase;
-  transition: background 0.2s, transform 0.1s;
-}
-.btn-reset:hover { background: #1e2d40; }
-.btn-reset:active { transform: scale(0.97); }
-
-/* LOGOUT */
-.btn-logout {
-  width: 100%;
-  background: transparent;
-  color: var(--red);
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  padding: 15px;
-  border: 1.5px solid rgba(255,68,85,0.35);
-  border-radius: 14px;
-  cursor: pointer;
-  text-transform: uppercase;
-  transition: background 0.2s, border-color 0.2s;
-}
-.btn-logout:hover {
-  background: rgba(255,68,85,0.07);
-  border-color: var(--red);
-}
-.btn-logout:active { transform: scale(0.98); }
+@media(min-width:480px){.content{padding:16px 20px 12px}footer{padding:14px 20px 20px}.app-title{font-size:1.45rem}}
 </style>
 </head>
 <body>
-
-<div class="hdr">
-  <div class="hdr-title">TUYUL BING</div>
-  <div class="hdr-sub">BAGAS JADI PRABU</div>
+<div class="topbar">
+  <div class="app-title">TUYUL BING</div>
+  <div class="app-sub">BAGAS JADI PRABU</div>
 </div>
-<div class="welcome" id="welcome">Selamat datang, —</div>
-<div class="pw" id="popWarn">⚠️ Izinkan POP-UP di browser agar bot bisa membuka tab otomatis!</div>
+<div class="wbar" id="wbar">Selamat datang, &mdash;</div>
+<div class="pw" id="pw">&#9888;&#65039; Izinkan POP-UP di browser agar bot bisa membuka tab otomatis!</div>
 
-<main>
+<div class="content" id="content">
 
-  <!-- ══ MSN ENGINE ══ -->
+  <!-- MSN ENGINE -->
   <div class="ecard" id="cardM">
     <div class="chead">
-      <div class="badge-row">
-        <span class="badge">MSN ENGINE</span>
-        <span class="onoff" id="lblM">OFF</span>
-      </div>
+      <div class="brow"><span class="badge">MSN ENGINE</span><span class="olbl" id="lblM">OFF</span></div>
       <div class="tpill" id="togM" onclick="toggleEng('M')"></div>
     </div>
     <div class="cbody">
       <label class="flbl">TARGET BACA</label>
-      <input class="inp" type="number" id="tgtM" value="10" min="1" max="999" inputmode="numeric" placeholder="10">
-
-      <div class="mm-row">
+      <input class="bi" type="number" id="tgtM" value="10" min="1" max="999" inputmode="numeric" placeholder="Jumlah artikel...">
+      <div class="mmrow">
         <div>
           <label class="flbl">MIN (Detik)</label>
-          <div class="step-row" id="srMinM">
-            <button class="step-btn" onclick="step('minM',-1)" id="minMminus">−</button>
-            <input class="step-inp" type="number" id="minM" value="8" min="1" max="120" inputmode="numeric">
-            <button class="step-btn" onclick="step('minM',1)">+</button>
+          <div class="stepper">
+            <button class="sb" onclick="step('minM',-1)" type="button">&#8722;</button>
+            <input class="si" type="number" id="minM" value="8" min="1" max="120" inputmode="numeric">
+            <button class="sb" onclick="step('minM',1)" type="button">+</button>
           </div>
         </div>
         <div>
           <label class="flbl">MAX (Detik)</label>
-          <div class="step-row" id="srMaxM">
-            <button class="step-btn" onclick="step('maxM',-1)">−</button>
-            <input class="step-inp" type="number" id="maxM" value="15" min="1" max="120" inputmode="numeric">
-            <button class="step-btn" onclick="step('maxM',1)">+</button>
+          <div class="stepper">
+            <button class="sb" onclick="step('maxM',-1)" type="button">&#8722;</button>
+            <input class="si" type="number" id="maxM" value="15" min="1" max="120" inputmode="numeric">
+            <button class="sb" onclick="step('maxM',1)" type="button">+</button>
           </div>
         </div>
       </div>
-
       <div class="stat" id="statM"><span class="sdot"></span><span id="statMt">Standby...</span></div>
-
-      <div class="prog-row">
-        <div><span class="prog-num" id="doneM">0</span><span class="prog-of" id="ofM">/10</span></div>
-        <div class="mis-lbl">MSN MISSION</div>
+      <div class="prow">
+        <div><span class="pnum" id="doneM">0</span><span class="pof" id="ofM">/10</span></div>
+        <div class="mlbl">MSN MISSION</div>
       </div>
       <div class="bar"><div class="fill" id="fillM"></div></div>
-
       <div class="prev" id="prevM">
         <div class="pi" id="innerM">
           <div class="pl f"></div><div class="pl l"></div><div class="pl m"></div>
@@ -679,51 +188,44 @@ footer {
           <div class="pl f"></div><div class="pl s"></div><div class="pl m"></div>
           <div class="pl f"></div><div class="pl l"></div>
         </div>
-        <div class="pcursor"></div>
+        <div class="pcur"></div>
       </div>
     </div>
   </div>
 
-  <!-- ══ BING ENGINE ══ -->
+  <!-- BING ENGINE -->
   <div class="ecard bing" id="cardB">
     <div class="chead">
-      <div class="badge-row">
-        <span class="badge">BING ENGINE</span>
-        <span class="onoff" id="lblB">OFF</span>
-      </div>
+      <div class="brow"><span class="badge">BING ENGINE</span><span class="olbl" id="lblB">OFF</span></div>
       <div class="tpill" id="togB" onclick="toggleEng('B')"></div>
     </div>
     <div class="cbody">
       <label class="flbl">TARGET PENCARIAN</label>
-      <input class="inp" type="number" id="tgtB" value="20" min="1" max="999" inputmode="numeric" placeholder="20">
-
-      <div class="mm-row">
+      <input class="bi" type="number" id="tgtB" value="20" min="1" max="999" inputmode="numeric" placeholder="Jumlah pencarian...">
+      <div class="mmrow">
         <div>
           <label class="flbl">MIN (Detik)</label>
-          <div class="step-row">
-            <button class="step-btn" onclick="step('minB',-1)">−</button>
-            <input class="step-inp" type="number" id="minB" value="8" min="1" max="120" inputmode="numeric">
-            <button class="step-btn" onclick="step('minB',1)">+</button>
+          <div class="stepper">
+            <button class="sb" onclick="step('minB',-1)" type="button">&#8722;</button>
+            <input class="si" type="number" id="minB" value="8" min="1" max="120" inputmode="numeric">
+            <button class="sb" onclick="step('minB',1)" type="button">+</button>
           </div>
         </div>
         <div>
           <label class="flbl">MAX (Detik)</label>
-          <div class="step-row">
-            <button class="step-btn" onclick="step('maxB',-1)">−</button>
-            <input class="step-inp" type="number" id="maxB" value="15" min="1" max="120" inputmode="numeric">
-            <button class="step-btn" onclick="step('maxB',1)">+</button>
+          <div class="stepper">
+            <button class="sb" onclick="step('maxB',-1)" type="button">&#8722;</button>
+            <input class="si" type="number" id="maxB" value="15" min="1" max="120" inputmode="numeric">
+            <button class="sb" onclick="step('maxB',1)" type="button">+</button>
           </div>
         </div>
       </div>
-
       <div class="stat" id="statB"><span class="sdot"></span><span id="statBt">Menunggu MSN...</span></div>
-
-      <div class="prog-row">
-        <div><span class="prog-num" id="doneB">0</span><span class="prog-of" id="ofB">/20</span></div>
-        <div class="mis-lbl">BING MISSION</div>
+      <div class="prow">
+        <div><span class="pnum" id="doneB">0</span><span class="pof" id="ofB">/20</span></div>
+        <div class="mlbl">BING MISSION</div>
       </div>
       <div class="bar"><div class="fill" id="fillB"></div></div>
-
       <div class="prev" id="prevB">
         <div class="pi" id="innerB">
           <div class="pl f"></div><div class="pl l"></div><div class="pl m"></div>
@@ -732,335 +234,104 @@ footer {
           <div class="pl f"></div><div class="pl s"></div><div class="pl m"></div>
           <div class="pl f"></div><div class="pl l"></div>
         </div>
-        <div class="pcursor"></div>
+        <div class="pcur"></div>
       </div>
     </div>
   </div>
 
-  <!-- ══ LOG ══ -->
-  <div class="log-card">
-    <div class="log-title">📋 Activity Log</div>
-    <div class="logbox" id="logBox">
-      <div class="le">— Siap menjalankan misi —</div>
-    </div>
+  <!-- LOG -->
+  <div class="lcard">
+    <div class="ltitle">&#128203; Activity Log</div>
+    <div class="lbox" id="logBox"><div class="le">&mdash; Siap menjalankan misi &mdash;</div></div>
   </div>
 
-  <!-- ══ FINISH ══ -->
+  <!-- FINISH -->
   <div class="fin" id="finBanner">
-    <h3>🏆 MISI BERHASIL SELESAI!</h3>
-    <p>Semua target MSN & Bing telah tercapai</p>
+    <h3>&#127942; MISI BERHASIL SELESAI!</h3>
+    <p>Semua target MSN &amp; Bing telah tercapai</p>
   </div>
 
-</main>
+  <div style="height:4px;flex-shrink:0"></div>
+</div>
 
 <footer>
-  <!-- MULAI MISI (tampil saat idle) -->
-  <button class="btn-mulai show" id="btnMulai" onclick="launch()">MULAI MISI</button>
-
-  <!-- JEDA + RESET (tampil saat running) -->
-  <div class="jr-row" id="jrRow">
-    <button class="btn-jeda" id="btnJeda" onclick="togglePause()">JEDA</button>
-    <button class="btn-reset" onclick="stopAll()">RESET</button>
+  <button class="bmulai on" id="btnMulai" onclick="launch()">MULAI MISI</button>
+  <div class="jrrow" id="jrRow">
+    <button class="bjeda" id="btnJeda" onclick="togglePause()">JEDA</button>
+    <button class="breset" onclick="stopAll()">RESET</button>
   </div>
-
-  <!-- LOGOUT selalu tampil -->
-  <button class="btn-logout" onclick="doLogout()">LOGOUT</button>
+  <button class="blogout" onclick="doLogout()">LOGOUT</button>
 </footer>
 
 <script>
-/* ── AUTH ── */
-const me = sessionStorage.getItem('tbUser');
-if (!me) window.location.href = 'login.html';
-else document.getElementById('welcome').textContent = 'Selamat datang, ' + me + ' 👾';
+const me=sessionStorage.getItem('tbUser');
+if(!me) window.location.href='login.html';
+else document.getElementById('wbar').textContent='Selamat datang, '+me+' \uD83D\uDC7E';
 
-/* ── DATA ── */
-const MSN_LINKS = ["https://www.msn.com/en-gb/health/nutrition/ultra-processed-foods-have-more-in-common-with-cigarettes-than-fruit/ar-AA1Vz4Fg","https://www.msn.com/en-gb/entertainment/tv/jeremy-clarkson-reveals-filming-for-clarkson-s-farm-has-stopped/ar-AA1X2iJn","https://www.msn.com/en-gb/cars/news/councils-ban-20-too-big-vehicles-from-car-parks-in-2026-full-list/ar-AA1W3uce","https://www.msn.com/en-gb/money/other/households-urged-to-never-plug-5-everyday-appliances-into-extension-leads-or-risk-fire/ar-AA1X1ezu","https://www.msn.com/en-gb/money/other/trump-s-iran-strikes-threaten-to-send-petrol-prices-soaring-and-rip-through-global-trade/ar-AA1Xgsr1","https://www.msn.com/en-gb/foodanddrink/other/i-asked-chefs-what-the-best-supermarket-butter-is-they-both-said-the-same-thing/ar-AA1VXajc","https://www.msn.com/en-gb/money/other/the-0-01pc-rule-that-could-transform-your-spending/ar-AA1Np9WX","https://www.msn.com/en-gb/sport/motorsports/formula-one-to-revise-controversial-rule-at-centre-of-mercedes-engine-row/ar-AA1Xg1kU","https://www.msn.com/en-gb/news/world/blaze-breaks-out-at-luxury-dubai-hotel-during-iran-air-attack/ar-AA1XgzNO","https://www.msn.com/en-gb/health/nutrition/how-dark-chocolate-can-protect-your-heart-gut-and-brain-and-the-best-bars-to-buy/ar-AA1XfJBW","https://www.msn.com/en-gb/news/world/lost-continent-unlike-anything-found-today-discovered-off-the-coast-of-australia/ar-AA1X2znl","https://www.msn.com/en-gb/news/uknews/uk-should-resist-being-dragged-into-war-after-iran-strikes-says-labour-mp/ar-AA1XfINB","https://www.msn.com/en-gb/health/other/this-is-the-struggling-capital-of-old-age-britain-soon-the-whole-country-will-be-the-same/ar-AA1Xfn4y","https://www.msn.com/en-gb/weather/topstories/met-office-names-uk-areas-facing-snow-on-sunday/ar-AA1Xe9YG","https://www.msn.com/en-gb/foodanddrink/other/the-30-best-breakfasts-in-london/ar-BB1qPDT8","https://www.msn.com/en-gb/news/uknews/farage-and-badenoch-back-trump-after-labour-mps-say-iran-strikes-unlawful/ar-AA1Xg5ws","https://www.msn.com/en-gb/lifestyle/family/what-viral-monkey-punch-teaches-us-about-gentle-parenting/ar-AA1X9ddK","https://www.msn.com/en-gb/health/other/the-science-behind-rfk-jr-s-new-diet-advice-and-it-s-not-all-wild/ar-AA1TWkcF","https://www.msn.com/en-gb/sport/football/man-city-xi-vs-leeds-starting-lineup-and-confirmed-team-news/ar-AA1X7xQr","https://www.msn.com/en-gb/foodanddrink/recipes/individual-toad-in-the-hole/ar-AA1PRoBJ","https://www.msn.com/en-gb/cars/news/20-cars-that-aren-t-as-good-as-you-think/ss-AA1PQJPT","https://www.msn.com/en-gb/lifestyle/shopping/gamercard-review-get-your-retro-fix-with-this-no-frills-device/ar-AA1VYGWQ","https://www.msn.com/en-gb/news/world/us-attack-on-iran-is-moment-of-extreme-peril-for-world-with-the-uk-impacted/ar-AA1XgkXi","https://www.msn.com/en-gb/travel/news/easter-s-cheapest-holiday-destination-is-4-hours-from-uk-with-25c-and-2-pints/ar-AA1WUJCi","https://www.msn.com/en-gb/cars/news/the-brilliant-car-designs-of-giorgetto-giugiaro/ss-AA1T6rkG","https://www.msn.com/en-gb/news/world/can-the-us-force-regime-change-upon-iran-and-depose-the-ayatollah/ar-AA1XfIDK","https://www.msn.com/en-gb/money/other/state-pension-age-rise-from-april-for-people-born-in-these-years/ar-AA1Xgalj","https://www.msn.com/en-gb/news/world/big-blasts-heard-over-dubai-as-people-run-for-cover-from-iranian-missiles/ar-AA1XghLS","https://www.msn.com/en-gb/health/other/study-claims-this-simple-brain-exercise-can-cut-dementia-risk-by-25/ar-AA1W1IlD","https://www.msn.com/en-gb/news/world/gibraltar-military-base-subject-to-eu-weapons-checks/ar-AA1Xcc7u","https://www.msn.com/en-gb/cars/news/the-best-ever-shooting-brakes/ss-AA1WM9Zx","https://www.msn.com/en-gb/cars/news/modern-car-headlights-are-blinding-britain-s-drivers/ar-AA1PkwUL"];
-const BING_WORDS = ["resep sahur praktis kenyang lama","jadwal imsakiyah ramadhan terbaru","tips menjaga stamina puasa","menu buka puasa sehat","cara khatam quran sebulan","manfaat sedekah di bulan ramadhan","keutamaan malam lailatul qadar","resep kolak pisang enak","persiapan mudik lebaran aman","promo tiket kereta mudik","cara membuat ketupat lebaran","tips hemat belanja ramadhan","olahraga ringan saat puasa","manfaat buah kurma kesehatan","cara mengatur waktu tidur","baju lebaran terbaru 2026","niat puasa ramadhan lengkap","doa buka puasa shahih","tata cara shalat tarawih","kumpulan kultum ramadhan singkat","zakat fitrah online terpercaya","cara membuat kue kering","resep opor ayam lebaran","tradisi ramadhan di nusantara","tips kulit sehat saat puasa","resep minuman segar buka puasa","cara mengelola keuangan ramadhan","jadwal buka puasa jakarta","tempat wisata religi populer","resep masakan daging sapi","tips diet sehat ramadhan","cara mengatasi bau mulut","manfaat puasa bagi lambung","ide bisnis jualan takjil","resep rendang asli padang","cara membuat hampers lebaran","doa harian bulan ramadhan","tata cara shalat ied","hukum sikat gigi puasa","cara menahan haus saat puasa","resep es buah segar","tips mudik pakai mobil","harga kurma ajwa terbaru","kumpulan ucapan selamat lebaran","cara bayar zakat mal","resep nastar lembut lumer","tips dekorasi rumah lebaran","manfaat madu untuk puasa","cara menjaga kesehatan mata","tips belajar saat puasa","resep sambal goreng ati","cara membuat kartu lebaran","jadwal kajian ramadhan online","resep ayam bakar madu","tips packing baju mudik","cara melatih anak puasa","resep puding coklat sutra","manfaat air putih cukup","cara cegah asam lambung","tips belanja baju lebaran","resep bakso sapi kenyal","cara simpan sayuran awet","tips wajah glowing ramadhan","resep soto ayam bening","cara bersihkan masjid musholla","tips aman meninggalkan rumah","resep sate kambing empuk","cara membuat ketupat janur","tips mengatur porsi makan","manfaat itikaf di masjid","resep es kelapa muda","cara hilangkan ngantuk puasa","tips berkendara malam hari","resep martabak telur mini","cara menabung untuk lebaran","manfaat jalan kaki pagi","resep sayur lodeh gurih","resep ayam goreng serundeng","resep jus alpukat kental","resep pindang ikan patin","resep seblak pedas nikmat"];
+const MSN_LINKS=["https://www.msn.com/en-gb/health/nutrition/ultra-processed-foods-have-more-in-common-with-cigarettes-than-fruit/ar-AA1Vz4Fg","https://www.msn.com/en-gb/entertainment/tv/jeremy-clarkson-reveals-filming-for-clarkson-s-farm-has-stopped/ar-AA1X2iJn","https://www.msn.com/en-gb/cars/news/councils-ban-20-too-big-vehicles-from-car-parks-in-2026-full-list/ar-AA1W3uce","https://www.msn.com/en-gb/money/other/households-urged-to-never-plug-5-everyday-appliances-into-extension-leads-or-risk-fire/ar-AA1X1ezu","https://www.msn.com/en-gb/money/other/trump-s-iran-strikes-threaten-to-send-petrol-prices-soaring-and-rip-through-global-trade/ar-AA1Xgsr1","https://www.msn.com/en-gb/foodanddrink/other/i-asked-chefs-what-the-best-supermarket-butter-is-they-both-said-the-same-thing/ar-AA1VXajc","https://www.msn.com/en-gb/money/other/the-0-01pc-rule-that-could-transform-your-spending/ar-AA1Np9WX","https://www.msn.com/en-gb/sport/motorsports/formula-one-to-revise-controversial-rule-at-centre-of-mercedes-engine-row/ar-AA1Xg1kU","https://www.msn.com/en-gb/news/world/blaze-breaks-out-at-luxury-dubai-hotel-during-iran-air-attack/ar-AA1XgzNO","https://www.msn.com/en-gb/health/nutrition/how-dark-chocolate-can-protect-your-heart-gut-and-brain-and-the-best-bars-to-buy/ar-AA1XfJBW","https://www.msn.com/en-gb/news/world/lost-continent-unlike-anything-found-today-discovered-off-the-coast-of-australia/ar-AA1X2znl","https://www.msn.com/en-gb/news/uknews/uk-should-resist-being-dragged-into-war-after-iran-strikes-says-labour-mp/ar-AA1XfINB","https://www.msn.com/en-gb/health/other/this-is-the-struggling-capital-of-old-age-britain-soon-the-whole-country-will-be-the-same/ar-AA1Xfn4y","https://www.msn.com/en-gb/weather/topstories/met-office-names-uk-areas-facing-snow-on-sunday/ar-AA1Xe9YG","https://www.msn.com/en-gb/foodanddrink/other/the-30-best-breakfasts-in-london/ar-BB1qPDT8","https://www.msn.com/en-gb/news/uknews/farage-and-badenoch-back-trump-after-labour-mps-say-iran-strikes-unlawful/ar-AA1Xg5ws","https://www.msn.com/en-gb/lifestyle/family/what-viral-monkey-punch-teaches-us-about-gentle-parenting/ar-AA1X9ddK","https://www.msn.com/en-gb/health/other/the-science-behind-rfk-jr-s-new-diet-advice-and-it-s-not-all-wild/ar-AA1TWkcF","https://www.msn.com/en-gb/sport/football/man-city-xi-vs-leeds-starting-lineup-and-confirmed-team-news/ar-AA1X7xQr","https://www.msn.com/en-gb/foodanddrink/recipes/individual-toad-in-the-hole/ar-AA1PRoBJ","https://www.msn.com/en-gb/cars/news/20-cars-that-aren-t-as-good-as-you-think/ss-AA1PQJPT","https://www.msn.com/en-gb/lifestyle/shopping/gamercard-review-get-your-retro-fix-with-this-no-frills-device/ar-AA1VYGWQ","https://www.msn.com/en-gb/news/world/us-attack-on-iran-is-moment-of-extreme-peril-for-world-with-the-uk-impacted/ar-AA1XgkXi","https://www.msn.com/en-gb/travel/news/easter-s-cheapest-holiday-destination-is-4-hours-from-uk-with-25c-and-2-pints/ar-AA1WUJCi","https://www.msn.com/en-gb/cars/news/the-brilliant-car-designs-of-giorgetto-giugiaro/ss-AA1T6rkG","https://www.msn.com/en-gb/news/world/can-the-us-force-regime-change-upon-iran-and-depose-the-ayatollah/ar-AA1XfIDK","https://www.msn.com/en-gb/money/other/state-pension-age-rise-from-april-for-people-born-in-these-years/ar-AA1Xgalj","https://www.msn.com/en-gb/news/world/big-blasts-heard-over-dubai-as-people-run-for-cover-from-iranian-missiles/ar-AA1XghLS","https://www.msn.com/en-gb/health/other/study-claims-this-simple-brain-exercise-can-cut-dementia-risk-by-25/ar-AA1W1IlD","https://www.msn.com/en-gb/news/world/gibraltar-military-base-subject-to-eu-weapons-checks/ar-AA1Xcc7u","https://www.msn.com/en-gb/cars/news/the-best-ever-shooting-brakes/ss-AA1WM9Zx","https://www.msn.com/en-gb/cars/news/modern-car-headlights-are-blinding-britain-s-drivers/ar-AA1PkwUL"];
+const BING_WORDS=["resep sahur praktis kenyang lama","jadwal imsakiyah ramadhan terbaru","tips menjaga stamina puasa","menu buka puasa sehat","cara khatam quran sebulan","manfaat sedekah di bulan ramadhan","keutamaan malam lailatul qadar","resep kolak pisang enak","persiapan mudik lebaran aman","promo tiket kereta mudik","cara membuat ketupat lebaran","tips hemat belanja ramadhan","olahraga ringan saat puasa","manfaat buah kurma kesehatan","cara mengatur waktu tidur","baju lebaran terbaru 2026","niat puasa ramadhan lengkap","doa buka puasa shahih","tata cara shalat tarawih","kumpulan kultum ramadhan singkat","zakat fitrah online terpercaya","cara membuat kue kering","resep opor ayam lebaran","tradisi ramadhan di nusantara","tips kulit sehat saat puasa","resep minuman segar buka puasa","cara mengelola keuangan ramadhan","jadwal buka puasa jakarta","tempat wisata religi populer","resep masakan daging sapi","tips diet sehat ramadhan","cara mengatasi bau mulut","manfaat puasa bagi lambung","ide bisnis jualan takjil","resep rendang asli padang","cara membuat hampers lebaran","doa harian bulan ramadhan","tata cara shalat ied","hukum sikat gigi puasa","cara menahan haus saat puasa","resep es buah segar","tips mudik pakai mobil","harga kurma ajwa terbaru","kumpulan ucapan selamat lebaran","cara bayar zakat mal","resep nastar lembut lumer","tips dekorasi rumah lebaran","manfaat madu untuk puasa","cara menjaga kesehatan mata","tips belajar saat puasa","resep sambal goreng ati","cara membuat kartu lebaran","jadwal kajian ramadhan online","resep ayam bakar madu","tips packing baju mudik","cara melatih anak puasa","resep puding coklat sutra","manfaat air putih cukup","cara cegah asam lambung","tips belanja baju lebaran","resep bakso sapi kenyal","cara simpan sayuran awet","tips wajah glowing ramadhan","resep soto ayam bening","cara bersihkan masjid musholla","tips aman meninggalkan rumah","resep sate kambing empuk","cara membuat ketupat janur","tips mengatur porsi makan","manfaat itikaf di masjid","resep es kelapa muda","cara hilangkan ngantuk puasa","tips berkendara malam hari","resep martabak telur mini","cara menabung untuk lebaran","manfaat jalan kaki pagi","resep sayur lodeh gurih","resep ayam goreng serundeng","resep jus alpukat kental","resep pindang ikan patin","resep seblak pedas nikmat"];
 
-/* ── STATE ── */
-let enabledM = false, enabledB = false;
-let linksM = [], wordsB = [];
-let cM = 0, cB = 0;
-let msnR = false, bingR = false;
-let isPaused = false, isRunning = false;
-let tMain = null, tSafe = null;
-let activeWin = null, scrollTs = [], popWarn = false;
+let enM=false,enB=false,linksM=[],wordsB=[],cM=0,cB=0,msnR=false,bingR=false,isPaused=false,isRunning=false,tMain=null,tSafe=null,activeWin=null,scrollTs=[],popW=false;
 
-/* ── STEPPER ── */
-function step(id, dir) {
-  const el = document.getElementById(id);
-  const v = parseInt(el.value) || 1;
-  const nv = Math.max(1, Math.min(120, v + dir));
-  el.value = nv;
+function step(id,d){const el=document.getElementById(id);el.value=Math.max(1,Math.min(120,(parseInt(el.value)||1)+d));}
+
+function toggleEng(t){
+  if(isRunning)return;
+  if(t==='M'){enM=!enM;document.getElementById('cardM').classList.toggle('on',enM);document.getElementById('lblM').textContent=enM?'ON':'OFF';}
+  else{enB=!enB;document.getElementById('cardB').classList.toggle('on',enB);document.getElementById('lblB').textContent=enB?'ON':'OFF';}
 }
 
-/* ── TOGGLE ENGINE ── */
-function toggleEng(t) {
-  if (isRunning) return;
-  if (t === 'M') {
-    enabledM = !enabledM;
-    document.getElementById('cardM').classList.toggle('is-on', enabledM);
-    document.getElementById('lblM').textContent = enabledM ? 'ON' : 'OFF';
-  } else {
-    enabledB = !enabledB;
-    document.getElementById('cardB').classList.toggle('is-on', enabledB);
-    document.getElementById('lblB').textContent = enabledB ? 'ON' : 'OFF';
-  }
-}
+document.getElementById('tgtM').addEventListener('input',function(){document.getElementById('ofM').textContent='/'+( this.value||0);});
+document.getElementById('tgtB').addEventListener('input',function(){document.getElementById('ofB').textContent='/'+( this.value||0);});
 
-/* ── SYNC /X ── */
-document.getElementById('tgtM').addEventListener('input', function() {
-  document.getElementById('ofM').textContent = '/' + (this.value || 0);
-});
-document.getElementById('tgtB').addEventListener('input', function() {
-  document.getElementById('ofB').textContent = '/' + (this.value || 0);
-});
+function startScroll(id,mode){stopScroll();const el=document.getElementById(id);const LH=12;const seq=mode==='msn'?[0,LH*3,LH*6,LH*9,LH*6,LH*3,0]:[0,LH*3,LH*6,LH*9,LH*12,0];let i=0;const tick=()=>{el.style.transform='translateY(-'+seq[i]+'px)';i=(i+1)%seq.length;scrollTs.push(setTimeout(tick,2000));};tick();}
+function stopScroll(){scrollTs.forEach(clearTimeout);scrollTs=[];}
+function resetScroll(id){stopScroll();const el=document.getElementById(id);if(el)el.style.transform='translateY(0)';}
 
-/* ── SCROLL ANIM ── */
-function startScroll(id, mode) {
-  clearScroll();
-  const el = document.getElementById(id);
-  const LH = 13;
-  const seq = mode === 'msn'
-    ? [0, LH*3, LH*6, LH*9, LH*6, LH*3, 0]
-    : [0, LH*3, LH*6, LH*9, LH*12, 0];
-  let i = 0;
-  const tick = () => {
-    el.style.transform = 'translateY(-' + seq[i] + 'px)';
-    i = (i + 1) % seq.length;
-    scrollTs.push(setTimeout(tick, 2000));
-  };
-  tick();
-}
-function clearScroll() {
-  scrollTs.forEach(clearTimeout); scrollTs = [];
-}
-function resetScroll(id) {
-  clearScroll();
-  const el = document.getElementById(id);
-  if (el) el.style.transform = 'translateY(0)';
-}
+function shuffle(arr){let a=[...arr];for(let i=a.length-1;i>0;i--){const j=crypto.getRandomValues(new Uint32Array(1))[0]%(i+1);[a[i],a[j]]=[a[j],a[i]];}for(let k=0;k<3;k++)a.sort(()=>Math.random()-.5);return a;}
+function cvid(){return Array.from(crypto.getRandomValues(new Uint8Array(16))).map(b=>b.toString(16).padStart(2,'0')).join('').toUpperCase();}
+function rand(a,b){return Math.floor(Math.random()*(b-a+1)+a);}
 
-/* ── HELPERS ── */
-function shuffle(a) {
-  let arr = [...a];
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = crypto.getRandomValues(new Uint32Array(1))[0] % (i + 1);
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  for (let k = 0; k < 3; k++) arr.sort(() => Math.random() - 0.5);
-  return arr;
-}
-function cvid() {
-  return Array.from(crypto.getRandomValues(new Uint8Array(16))).map(b=>b.toString(16).padStart(2,'0')).join('').toUpperCase();
-}
-function rand(a, b) { return Math.floor(Math.random() * (b - a + 1) + a); }
+function log(msg,cls){const box=document.getElementById('logBox');const ts=new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit',second:'2-digit'});const d=document.createElement('div');d.className='le '+(cls||'');d.textContent='['+ts+'] '+msg;box.appendChild(d);box.scrollTop=box.scrollHeight;}
+function setStat(id,txt,cls){document.getElementById('stat'+id).className='stat '+(cls||'');document.getElementById('stat'+id+'t').textContent=txt;}
+function setAll(dis){document.querySelectorAll('.bi,.si,.sb').forEach(el=>el.disabled=dis);}
+function closeWin(){if(activeWin){try{activeWin.close();}catch(e){}activeWin=null;}}
+function openUrl(url){try{activeWin=window.open(url,'_blank');if(!activeWin&&!popW){popW=true;document.getElementById('pw').classList.add('on');log('Popup diblokir! Izinkan di browser.','gold');}}catch(e){}}
 
-function log(msg, cls='') {
-  const box = document.getElementById('logBox');
-  const ts = new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
-  const d = document.createElement('div');
-  d.className = 'le ' + cls;
-  d.textContent = '[' + ts + '] ' + msg;
-  box.appendChild(d);
-  box.scrollTop = box.scrollHeight;
-}
-
-function setStat(id, txt, cls) {
-  const el = document.getElementById('stat' + id);
-  el.className = 'stat ' + cls;
-  document.getElementById('stat' + id + 't').textContent = txt;
-}
-
-function setInputs(dis) {
-  document.querySelectorAll('.inp, .step-inp, .step-btn').forEach(el => el.disabled = dis);
-}
-
-function closeWin() {
-  if (activeWin) { try { activeWin.close(); } catch(e){} activeWin = null; }
-}
-
-function openUrl(url) {
-  try {
-    activeWin = window.open(url, '_blank');
-    if (!activeWin && !popWarn) {
-      popWarn = true;
-      document.getElementById('popWarn').classList.add('show');
-      log('⚠️ Pop-up diblokir! Izinkan di browser.', 'gold');
-    }
-  } catch(e) {}
-}
-
-/* ── LAUNCH ── */
-function launch() {
-  if (!enabledM && !enabledB) {
-    alert('Aktifkan minimal satu Engine!\n\nKlik toggle ON pada MSN atau BING ENGINE.');
-    return;
-  }
-  linksM = shuffle(MSN_LINKS);
-  wordsB = shuffle(BING_WORDS);
-  cM = 0; cB = 0; isRunning = true; isPaused = false; popWarn = false;
-
-  ['M','B'].forEach(t => {
-    document.getElementById('done'+t).textContent = 0;
-    document.getElementById('fill'+t).style.width = '0%';
-    document.getElementById('card'+t).classList.remove('is-done','is-running');
-  });
-  document.getElementById('ofM').textContent = '/' + document.getElementById('tgtM').value;
-  document.getElementById('ofB').textContent = '/' + document.getElementById('tgtB').value;
+function launch(){
+  if(!enM&&!enB){alert('Aktifkan minimal satu Engine!\nKlik toggle ON pada MSN atau BING ENGINE.');return;}
+  linksM=shuffle(MSN_LINKS);wordsB=shuffle(BING_WORDS);cM=0;cB=0;isRunning=true;isPaused=false;popW=false;
+  ['M','B'].forEach(t=>{document.getElementById('done'+t).textContent=0;document.getElementById('fill'+t).style.width='0%';document.getElementById('card'+t).classList.remove('done','running');});
+  document.getElementById('ofM').textContent='/'+document.getElementById('tgtM').value;
+  document.getElementById('ofB').textContent='/'+document.getElementById('tgtB').value;
   document.getElementById('finBanner').classList.remove('on');
-  document.getElementById('popWarn').classList.remove('show');
-  setStat('M','Standby...','');
-  setStat('B', enabledM ? 'Menunggu MSN...' : 'Siap...', '');
-
-  setInputs(true);
-  document.getElementById('btnMulai').classList.remove('show');
-  document.getElementById('jrRow').classList.add('show');
-  document.getElementById('btnJeda').textContent = 'JEDA';
+  document.getElementById('pw').classList.remove('on');
+  setStat('M','Standby...','');setStat('B',enM?'Menunggu MSN...':'Siap...','');
+  setAll(true);
+  document.getElementById('btnMulai').classList.remove('on');
+  document.getElementById('jrRow').classList.add('on');
+  document.getElementById('btnJeda').textContent='JEDA';
   document.getElementById('btnJeda').classList.remove('paused');
-
-  log('══════ MISI DIMULAI ══════', 'gold');
-
-  if (enabledM) { msnR = true; document.getElementById('cardM').classList.add('is-running'); document.getElementById('prevM').classList.add('on'); runMsn(); }
-  else          { bingR = true; document.getElementById('cardB').classList.add('is-running'); document.getElementById('prevB').classList.add('on'); runBing(); }
+  log('MISI DIMULAI','gold');
+  if(enM){msnR=true;document.getElementById('cardM').classList.add('running');document.getElementById('prevM').classList.add('on');runMsn();}
+  else{bingR=true;document.getElementById('cardB').classList.add('running');document.getElementById('prevB').classList.add('on');runBing();}
 }
 
-/* ── MSN ── */
-function runMsn() {
-  if (isPaused || !msnR) return;
-  if (!linksM.length) linksM = shuffle(MSN_LINKS);
-  const wait = rand(parseInt(document.getElementById('minM').value)||8, parseInt(document.getElementById('maxM').value)||15) * 1000;
-  const url = linksM.pop();
-  setStat('M','🌐 Membaca artikel MSN...','live');
-  log('MSN › artikel #' + (cM+1), 'c');
-  startScroll('innerM','msn');
-  openUrl(url);
-  clearTimeout(tMain); clearTimeout(tSafe);
-  tMain = setTimeout(nextM, wait);
-  tSafe = setTimeout(nextM, wait + 4000);
-}
-function nextM() {
-  clearTimeout(tMain); clearTimeout(tSafe);
-  resetScroll('innerM'); closeWin();
-  cM++;
-  document.getElementById('doneM').textContent = cM;
-  const tgt = parseInt(document.getElementById('tgtM').value);
-  document.getElementById('fillM').style.width = (cM/tgt*100) + '%';
-  log('✓ MSN ' + cM + '/' + tgt, 'g');
-  if (cM < tgt) { setStat('M','⏳ Jeda...',''); tMain = setTimeout(runMsn, 2500); }
-  else {
-    msnR = false;
-    document.getElementById('cardM').classList.remove('is-running');
-    document.getElementById('cardM').classList.add('is-done');
-    document.getElementById('prevM').classList.remove('on');
-    setStat('M','🏆 MSN Selesai!','ok');
-    log('══ MSN SELESAI ══','gold');
-    if (enabledB) {
-      const cd = rand(4,7)*1000;
-      setStat('B','⏳ Cooldown ' + (cd/1000) + ' dtk...','');
-      log('Cooldown → Bing...','gold');
-      setTimeout(() => { bingR = true; document.getElementById('cardB').classList.add('is-running'); document.getElementById('prevB').classList.add('on'); runBing(); }, cd);
-    } else finishAll();
-  }
-}
+function runMsn(){if(isPaused||!msnR)return;if(!linksM.length)linksM=shuffle(MSN_LINKS);const wait=rand(parseInt(document.getElementById('minM').value)||8,parseInt(document.getElementById('maxM').value)||15)*1000;const url=linksM.pop();setStat('M','Membaca artikel MSN...','live');log('MSN artikel #'+(cM+1),'c');startScroll('innerM','msn');openUrl(url);clearTimeout(tMain);clearTimeout(tSafe);tMain=setTimeout(nextM,wait);tSafe=setTimeout(nextM,wait+4000);}
+function nextM(){clearTimeout(tMain);clearTimeout(tSafe);resetScroll('innerM');closeWin();cM++;document.getElementById('doneM').textContent=cM;const tgt=parseInt(document.getElementById('tgtM').value);document.getElementById('fillM').style.width=(cM/tgt*100)+'%';log('MSN '+cM+'/'+tgt,'g');if(cM<tgt){setStat('M','Jeda...','');tMain=setTimeout(runMsn,2500);}else{msnR=false;document.getElementById('cardM').classList.remove('running');document.getElementById('cardM').classList.add('done');document.getElementById('prevM').classList.remove('on');setStat('M','MSN Selesai!','ok');log('MSN SELESAI','gold');if(enB){const cd=rand(4,7)*1000;setStat('B','Cooldown '+(cd/1000)+' dtk...','');setTimeout(()=>{bingR=true;document.getElementById('cardB').classList.add('running');document.getElementById('prevB').classList.add('on');runBing();},cd);}else finishAll();}}
 
-/* ── BING ── */
-function runBing() {
-  if (isPaused || !bingR) return;
-  if (!wordsB.length) wordsB = shuffle(BING_WORDS);
-  const wait = rand(parseInt(document.getElementById('minB').value)||8, parseInt(document.getElementById('maxB').value)||15) * 1000;
-  const q = wordsB.pop();
-  const url = 'https://www.bing.com/search?q=' + encodeURIComponent(q) + '&qs=n&form=QBRE&cvid=' + cvid();
-  setStat('B','🔎 Mencari: ' + q,'live');
-  log('Bing › "' + q + '"', 'c');
-  startScroll('innerB','bing');
-  openUrl(url);
-  clearTimeout(tMain); clearTimeout(tSafe);
-  tMain = setTimeout(nextB, wait);
-  tSafe = setTimeout(nextB, wait + 5000);
-}
-function nextB() {
-  clearTimeout(tMain); clearTimeout(tSafe);
-  resetScroll('innerB'); closeWin();
-  cB++;
-  document.getElementById('doneB').textContent = cB;
-  const tgt = parseInt(document.getElementById('tgtB').value);
-  document.getElementById('fillB').style.width = (cB/tgt*100) + '%';
-  log('✓ Bing ' + cB + '/' + tgt, 'g');
-  if (cB < tgt) { setStat('B','⏳ Jeda...',''); tMain = setTimeout(runBing, 2000); }
-  else finishAll();
-}
+function runBing(){if(isPaused||!bingR)return;if(!wordsB.length)wordsB=shuffle(BING_WORDS);const wait=rand(parseInt(document.getElementById('minB').value)||8,parseInt(document.getElementById('maxB').value)||15)*1000;const q=wordsB.pop();const url='https://www.bing.com/search?q='+encodeURIComponent(q)+'&qs=n&form=QBRE&cvid='+cvid();setStat('B','Mencari: '+q,'live');log('Bing: '+q,'c');startScroll('innerB','bing');openUrl(url);clearTimeout(tMain);clearTimeout(tSafe);tMain=setTimeout(nextB,wait);tSafe=setTimeout(nextB,wait+5000);}
+function nextB(){clearTimeout(tMain);clearTimeout(tSafe);resetScroll('innerB');closeWin();cB++;document.getElementById('doneB').textContent=cB;const tgt=parseInt(document.getElementById('tgtB').value);document.getElementById('fillB').style.width=(cB/tgt*100)+'%';log('Bing '+cB+'/'+tgt,'g');if(cB<tgt){setStat('B','Jeda...','');tMain=setTimeout(runBing,2000);}else finishAll();}
 
-/* ── PAUSE ── */
-function togglePause() {
-  isPaused = !isPaused;
-  const btn = document.getElementById('btnJeda');
-  if (isPaused) {
-    clearTimeout(tMain); clearTimeout(tSafe);
-    clearScroll();
-    btn.textContent = 'LANJUT'; btn.classList.add('paused');
-    if (msnR) setStat('M','⏸ Dijeda...','');
-    if (bingR) setStat('B','⏸ Dijeda...','');
-    log('⏸ Dijeda.','gold');
-  } else {
-    btn.textContent = 'JEDA'; btn.classList.remove('paused');
-    log('▶ Dilanjutkan.','gold');
-    if (msnR) runMsn();
-    else if (bingR) runBing();
-  }
-}
+function togglePause(){isPaused=!isPaused;const btn=document.getElementById('btnJeda');if(isPaused){clearTimeout(tMain);clearTimeout(tSafe);stopScroll();btn.textContent='LANJUT';btn.classList.add('paused');if(msnR)setStat('M','Dijeda...','');if(bingR)setStat('B','Dijeda...','');log('Dijeda.','gold');}else{btn.textContent='JEDA';btn.classList.remove('paused');log('Dilanjutkan.','gold');if(msnR)runMsn();else if(bingR)runBing();}}
 
-/* ── RESET / STOP ── */
-function stopAll() {
-  if (!confirm('Reset & hentikan misi sekarang?')) return;
-  clearTimeout(tMain); clearTimeout(tSafe);
-  clearScroll(); closeWin();
-  msnR = false; bingR = false; isPaused = false; isRunning = false;
-  setStat('M','Standby...','');
-  setStat('B','Menunggu MSN...','');
-  document.getElementById('cardM').classList.remove('is-running','is-done');
-  document.getElementById('cardB').classList.remove('is-running','is-done');
-  document.getElementById('prevM').classList.remove('on');
-  document.getElementById('prevB').classList.remove('on');
-  document.getElementById('doneM').textContent = 0;
-  document.getElementById('doneB').textContent = 0;
-  document.getElementById('fillM').style.width = '0%';
-  document.getElementById('fillB').style.width = '0%';
-  document.getElementById('finBanner').classList.remove('on');
-  log('🔄 Direset.','gold');
-  resetControls();
-}
+function stopAll(){if(!confirm('Reset dan hentikan misi?'))return;clearTimeout(tMain);clearTimeout(tSafe);stopScroll();closeWin();msnR=false;bingR=false;isPaused=false;isRunning=false;setStat('M','Standby...','');setStat('B','Menunggu MSN...','');['M','B'].forEach(t=>{document.getElementById('card'+t).classList.remove('running','done');document.getElementById('prev'+t).classList.remove('on');document.getElementById('done'+t).textContent=0;document.getElementById('fill'+t).style.width='0%';});document.getElementById('finBanner').classList.remove('on');log('Direset.','gold');resetCtrl();}
 
-/* ── FINISH ── */
-function finishAll() {
-  closeWin(); clearScroll();
-  msnR = false; bingR = false; isRunning = false;
-  document.getElementById('cardB').classList.remove('is-running');
-  document.getElementById('cardB').classList.add('is-done');
-  document.getElementById('prevB').classList.remove('on');
-  setStat('B','🏆 Bing Selesai!','ok');
-  document.getElementById('finBanner').classList.add('on');
-  log('══ 🏆 SEMUA MISI SELESAI! ══','gold');
-  resetControls();
-  document.getElementById('btnMulai').textContent = 'MULAI MISI BARU';
-}
+function finishAll(){closeWin();stopScroll();msnR=false;bingR=false;isRunning=false;document.getElementById('cardB').classList.remove('running');document.getElementById('cardB').classList.add('done');document.getElementById('prevB').classList.remove('on');setStat('B','Bing Selesai!','ok');document.getElementById('finBanner').classList.add('on');log('SEMUA MISI SELESAI!','gold');resetCtrl();document.getElementById('btnMulai').textContent='MULAI MISI BARU';}
 
-function resetControls() {
-  setInputs(false);
-  document.getElementById('btnMulai').classList.add('show');
-  document.getElementById('btnMulai').disabled = false;
-  document.getElementById('jrRow').classList.remove('show');
-  document.getElementById('btnJeda').classList.remove('paused');
-  document.getElementById('btnJeda').textContent = 'JEDA';
-}
+function resetCtrl(){setAll(false);const bm=document.getElementById('btnMulai');bm.classList.add('on');bm.disabled=false;bm.textContent='MULAI MISI';document.getElementById('jrRow').classList.remove('on');document.getElementById('btnJeda').classList.remove('paused');document.getElementById('btnJeda').textContent='JEDA';}
 
-/* ── LOGOUT ── */
-function doLogout() {
-  clearTimeout(tMain); clearTimeout(tSafe);
-  clearScroll(); closeWin();
-  sessionStorage.removeItem('tbUser');
-  window.location.href = 'login.html';
-}
+function doLogout(){clearTimeout(tMain);clearTimeout(tSafe);stopScroll();closeWin();sessionStorage.removeItem('tbUser');window.location.href='login.html';}
 </script>
 </body>
 </html>

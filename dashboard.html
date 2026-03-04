@@ -15,23 +15,17 @@
 html,body{height:100%;width:100%;overflow:hidden}
 body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column;-webkit-tap-highlight-color:transparent}
 
-/* TOP BAR */
 .topbar{flex-shrink:0;background:#0e1626;border-bottom:1px solid var(--bdr);text-align:center;padding:14px 16px 12px;position:relative;z-index:20}
 .topbar::after{content:'';position:absolute;bottom:-1px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
 .app-title{font-size:1.3rem;font-weight:900;color:var(--gold);letter-spacing:5px;text-transform:uppercase}
 .app-sub{font-size:0.58rem;font-weight:700;letter-spacing:4px;color:var(--green);text-transform:uppercase;margin-top:2px;text-shadow:0 0 10px rgba(0,232,122,.45)}
 
-/* WELCOME */
-.wbar{flex-shrink:0;background:#0c1420;border-bottom:1px solid var(--bdr);padding:8px 16px;text-align:center;font-size:0.75rem;font-weight:600;color:var(--cyan);letter-spacing:.5px;z-index:19}
-
-/* POPUP WARN */
+.wbar{flex-shrink:0;background:#0c1420;border-bottom:1px solid var(--bdr);padding:8px 16px;text-align:center;font-size:0.75rem;font-weight:600;color:var(--cyan);letter-spacing:.5px}
 .pw{flex-shrink:0;background:#1a1100;border-bottom:1px solid #3a2800;padding:8px 14px;text-align:center;font-size:.68rem;font-weight:600;color:var(--gold);display:none}
 .pw.on{display:block}
 
-/* SCROLL AREA */
 .content{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;padding:14px 14px 10px;display:flex;flex-direction:column;gap:12px;min-height:0}
 
-/* ENGINE CARD */
 .ecard{background:var(--card);border:1.5px solid var(--bdr);border-radius:16px;overflow:visible;transition:border-color .3s,box-shadow .3s;width:100%}
 .ecard.on{border-color:rgba(0,212,245,.5);box-shadow:0 0 22px rgba(0,212,245,.07)}
 .ecard.on.bing{border-color:rgba(0,232,122,.5);box-shadow:0 0 22px rgba(0,232,122,.07)}
@@ -39,7 +33,6 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);dis
 .ecard.running.bing{border-color:rgba(0,232,122,.75);box-shadow:0 0 28px rgba(0,232,122,.12)}
 .ecard.done{border-color:rgba(0,232,122,.55)}
 
-/* CARD HEAD */
 .chead{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:rgba(0,0,0,.2);border-bottom:1px solid var(--bdr);border-radius:16px 16px 0 0;gap:10px}
 .brow{display:flex;align-items:center;gap:8px;flex-shrink:0}
 .badge{font-size:.68rem;font-weight:700;letter-spacing:1.5px;padding:5px 14px;border-radius:30px;text-transform:uppercase;border:1.5px solid rgba(0,212,245,.3);background:rgba(0,212,245,.08);color:var(--cyan);white-space:nowrap;transition:all .3s}
@@ -47,9 +40,8 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);dis
 .ecard.on .badge{background:rgba(0,212,245,.15);border-color:var(--cyan)}
 .ecard.on.bing .badge{background:rgba(0,232,122,.15);border-color:var(--green)}
 .olbl{font-size:.62rem;font-weight:700;letter-spacing:1.5px;color:var(--muted);transition:color .3s;text-transform:uppercase}
-.ecard.on .olbl{color:var(--cyan)} .ecard.on.bing .olbl{color:var(--green)}
+.ecard.on .olbl{color:var(--cyan)}.ecard.on.bing .olbl{color:var(--green)}
 
-/* TOGGLE */
 .tpill{width:52px;height:28px;border-radius:14px;background:#1c2b3e;border:1.5px solid #263848;position:relative;cursor:pointer;flex-shrink:0;transition:all .3s}
 .tpill::after{content:'';position:absolute;width:20px;height:20px;background:var(--muted);border-radius:50%;top:3px;left:3px;transition:transform .28s cubic-bezier(.4,0,.2,1),background .28s;box-shadow:0 1px 4px rgba(0,0,0,.5)}
 .ecard.on .tpill{background:rgba(0,212,245,.2);border-color:var(--cyan);box-shadow:0 0 12px rgba(0,212,245,.3)}
@@ -57,42 +49,34 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);dis
 .ecard.on.bing .tpill{background:rgba(0,232,122,.2);border-color:var(--green);box-shadow:0 0 12px rgba(0,232,122,.3)}
 .ecard.on.bing .tpill::after{background:var(--green);box-shadow:0 0 8px rgba(0,232,122,.7)}
 
-/* CARD BODY */
 .cbody{padding:16px;transition:opacity .3s}
 .ecard:not(.on) .cbody{opacity:.28;pointer-events:none;user-select:none}
 
-/* LABELS */
 .flbl{display:block;font-size:.62rem;font-weight:700;letter-spacing:2px;color:var(--muted);margin-bottom:7px;text-transform:uppercase}
 
-/* BIG INPUT */
 .bi{display:block;width:100%;background:var(--surf);border:1.5px solid var(--bdr);border-radius:12px;color:var(--text);font-family:'Poppins',sans-serif;font-size:1.25rem;font-weight:700;padding:13px 16px;outline:none;transition:border-color .2s,box-shadow .2s;-moz-appearance:textfield;-webkit-appearance:none;appearance:none;caret-color:var(--cyan)}
 .bi::-webkit-outer-spin-button,.bi::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
 .bi:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,212,245,.1)}
 .bing .bi:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(0,232,122,.1)}
 .bi:disabled{opacity:.4;cursor:not-allowed}
 
-/* MIN MAX ROW */
 .mmrow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
-
-/* STEPPER */
 .stepper{display:flex;align-items:stretch;background:var(--surf);border:1.5px solid var(--bdr);border-radius:10px;overflow:hidden;transition:border-color .2s,box-shadow .2s;height:46px}
 .stepper:focus-within{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,212,245,.1)}
 .bing .stepper:focus-within{border-color:var(--green);box-shadow:0 0 0 3px rgba(0,232,122,.1)}
 .sb{width:38px;flex-shrink:0;background:var(--dim);color:var(--text);font-size:1.1rem;font-weight:700;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s;user-select:none;-webkit-tap-highlight-color:transparent}
-.sb:active{background:#253a52} .sb:disabled{opacity:.35;cursor:not-allowed}
+.sb:active{background:#253a52}.sb:disabled{opacity:.35;cursor:not-allowed}
 .si{flex:1;min-width:0;background:transparent;border:none;color:var(--text);font-family:'Poppins',sans-serif;font-size:.95rem;font-weight:700;text-align:center;outline:none;padding:0 2px;-moz-appearance:textfield;caret-color:var(--cyan)}
 .si::-webkit-outer-spin-button,.si::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
 .si:disabled{opacity:.4}
 
-/* STATUS */
 .stat{display:flex;align-items:center;gap:7px;font-size:.78rem;font-weight:500;color:var(--muted);margin:13px 0 9px;min-height:20px;transition:color .3s}
 .sdot{width:7px;height:7px;border-radius:50%;background:var(--muted);flex-shrink:0;transition:background .3s}
-.stat.live{color:var(--cyan)} .stat.live .sdot{background:var(--cyan);animation:blink 1s infinite}
-.bing .stat.live{color:var(--green)} .bing .stat.live .sdot{background:var(--green)}
-.stat.ok{color:var(--green)} .stat.ok .sdot{background:var(--green);animation:none}
+.stat.live{color:var(--cyan)}.stat.live .sdot{background:var(--cyan);animation:blink 1s infinite}
+.bing .stat.live{color:var(--green)}.bing .stat.live .sdot{background:var(--green)}
+.stat.ok{color:var(--green)}.stat.ok .sdot{background:var(--green);animation:none}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
 
-/* PROGRESS */
 .prow{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px}
 .pnum{font-size:1.1rem;font-weight:800;color:var(--gold)}
 .pof{font-size:.68rem;font-weight:600;color:var(--muted)}
@@ -102,56 +86,65 @@ body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);dis
 .fill{height:100%;width:0%;border-radius:5px;background:linear-gradient(90deg,var(--cyan),#00afd0);transition:width .5s ease}
 .bing .fill{background:linear-gradient(90deg,var(--green),#00c060)}
 
-/* SCROLL PREVIEW */
-.prev{display:none;background:rgba(0,0,0,.25);border:1px solid var(--bdr);border-radius:8px;height:60px;overflow:hidden;position:relative;margin-top:10px}
+/* ── SCROLL PREVIEW (visual simulasi human scroll) ── */
+.prev{display:none;background:rgba(0,0,0,.3);border:1px solid var(--bdr);border-radius:10px;height:72px;overflow:hidden;position:relative;margin-top:10px}
 .prev.on{display:block}
-.pi{position:absolute;width:100%;padding:9px 12px 0;transition:transform .6s cubic-bezier(.4,0,.2,1)}
-.pl{height:4px;border-radius:2px;background:var(--dim);margin-bottom:8px}
+.pi{position:absolute;width:100%;padding:9px 12px 0;will-change:transform}
+.pl{height:4px;border-radius:2px;background:var(--dim);margin-bottom:9px}
 .pl.s{width:38%}.pl.m{width:62%}.pl.l{width:86%}.pl.f{width:100%}
-.pcur{position:absolute;bottom:6px;right:9px;width:6px;height:6px;background:var(--cyan);border-radius:50%;animation:blink 1.1s infinite}
+/* cursor blink */
+.pcur{position:absolute;bottom:6px;right:10px;width:7px;height:7px;background:var(--cyan);border-radius:50%;animation:blink 1.1s infinite}
 .bing .pcur{background:var(--green)}
+/* simulated click flash */
+.click-flash{position:absolute;width:18px;height:18px;border-radius:50%;background:rgba(0,212,245,.55);transform:scale(0);animation:none;pointer-events:none}
+.click-flash.fire{animation:clickPop .4s ease-out forwards}
+@keyframes clickPop{0%{transform:scale(0);opacity:1}100%{transform:scale(3);opacity:0}}
 
-/* LOG */
+/* ── BEHAVIOR BADGES ── */
+.bhv{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.btag{font-size:.58rem;font-weight:700;letter-spacing:1px;padding:3px 9px;border-radius:20px;text-transform:uppercase;border:1px solid var(--bdr);color:var(--muted);transition:all .3s}
+.btag.active{color:var(--cyan);border-color:var(--cyan);background:rgba(0,212,245,.08)}
+.bing .btag.active{color:var(--green);border-color:var(--green);background:rgba(0,232,122,.08)}
+
 .lcard{background:var(--card);border:1.5px solid var(--bdr);border-radius:14px;padding:12px 14px;width:100%}
 .ltitle{font-size:.6rem;font-weight:700;letter-spacing:2px;color:var(--muted);margin-bottom:8px;text-transform:uppercase}
-.lbox{max-height:80px;overflow-y:auto;font-size:.7rem;font-weight:500;line-height:1.7;color:var(--muted)}
-.lbox::-webkit-scrollbar{width:3px} .lbox::-webkit-scrollbar-thumb{background:var(--dim);border-radius:2px}
-.le{color:var(--muted)} .le.c{color:var(--cyan)} .le.g{color:var(--green)} .le.gold{color:var(--gold)} .le.r{color:var(--red)}
+.lbox{max-height:84px;overflow-y:auto;font-size:.7rem;font-weight:500;line-height:1.75;color:var(--muted)}
+.lbox::-webkit-scrollbar{width:3px}.lbox::-webkit-scrollbar-thumb{background:var(--dim);border-radius:2px}
+.le{color:var(--muted)}.le.c{color:var(--cyan)}.le.g{color:var(--green)}.le.gold{color:var(--gold)}.le.r{color:var(--red)}
 
-/* FINISH */
 .fin{display:none;background:linear-gradient(135deg,#06180e,#06101a);border:1.5px solid rgba(0,232,122,.3);border-radius:14px;padding:18px 16px;text-align:center}
-.fin.on{display:block} .fin h3{font-size:.88rem;font-weight:800;color:var(--green);letter-spacing:1px;margin-bottom:4px} .fin p{font-size:.72rem;font-weight:500;color:var(--muted)}
+.fin.on{display:block}.fin h3{font-size:.88rem;font-weight:800;color:var(--green);letter-spacing:1px;margin-bottom:4px}.fin p{font-size:.72rem;font-weight:500;color:var(--muted)}
 
-/* FOOTER */
 footer{flex-shrink:0;background:var(--bg);border-top:1px solid var(--bdr);padding:12px 14px max(18px,env(safe-area-inset-bottom,18px));display:flex;flex-direction:column;gap:9px;z-index:20}
 .bmulai{display:none;width:100%;background:linear-gradient(135deg,#00c060,#009e50);color:#fff;font-family:'Poppins',sans-serif;font-size:.95rem;font-weight:800;letter-spacing:2px;padding:16px;border:none;border-radius:13px;cursor:pointer;text-transform:uppercase;box-shadow:0 4px 20px rgba(0,192,96,.25);transition:opacity .2s,transform .1s}
-.bmulai.on{display:block} .bmulai:hover{opacity:.9} .bmulai:active{transform:scale(.98)} .bmulai:disabled{background:#0d180f;color:#253520;cursor:not-allowed;box-shadow:none}
-.jrrow{display:none;grid-template-columns:1fr 1fr;gap:9px} .jrrow.on{display:grid}
+.bmulai.on{display:block}.bmulai:hover{opacity:.9}.bmulai:active{transform:scale(.98)}.bmulai:disabled{background:#0d180f;color:#253520;cursor:not-allowed;box-shadow:none}
+.jrrow{display:none;grid-template-columns:1fr 1fr;gap:9px}.jrrow.on{display:grid}
 .bjeda{background:linear-gradient(135deg,#d08000,#b06800);color:#fff;font-family:'Poppins',sans-serif;font-size:.9rem;font-weight:800;letter-spacing:2px;padding:15px;border:none;border-radius:13px;cursor:pointer;text-transform:uppercase;box-shadow:0 4px 16px rgba(208,128,0,.25);transition:opacity .2s,transform .1s}
-.bjeda:active{transform:scale(.97)} .bjeda.paused{background:linear-gradient(135deg,#0060a0,#004a80);box-shadow:0 4px 16px rgba(0,96,160,.25)}
+.bjeda:active{transform:scale(.97)}.bjeda.paused{background:linear-gradient(135deg,#0060a0,#004a80)}
 .breset{background:var(--surf);color:var(--text);font-family:'Poppins',sans-serif;font-size:.9rem;font-weight:800;letter-spacing:2px;padding:15px;border:1.5px solid var(--bdr);border-radius:13px;cursor:pointer;text-transform:uppercase;transition:background .2s,transform .1s}
-.breset:hover{background:#1c2c3e} .breset:active{transform:scale(.97)}
+.breset:hover{background:#1c2c3e}.breset:active{transform:scale(.97)}
 .blogout{display:block;width:100%;background:transparent;color:var(--red);font-family:'Poppins',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:2px;padding:14px;border:1.5px solid rgba(255,68,85,.35);border-radius:13px;cursor:pointer;text-transform:uppercase;transition:background .2s,border-color .2s,transform .1s}
-.blogout:hover{background:rgba(255,68,85,.06);border-color:var(--red)} .blogout:active{transform:scale(.98)}
+.blogout:hover{background:rgba(255,68,85,.06);border-color:var(--red)}.blogout:active{transform:scale(.98)}
 
 @media(min-width:480px){.content{padding:16px 20px 12px}footer{padding:14px 20px 20px}.app-title{font-size:1.45rem}}
 </style>
 </head>
 <body>
+
 <div class="topbar">
   <div class="app-title">TUYUL BING</div>
   <div class="app-sub">BAGAS JADI PRABU</div>
 </div>
-<div class="wbar" id="wbar">Selamat datang, &mdash;</div>
+<div class="wbar" id="wbar">Selamat datang, &#8212;</div>
 <div class="pw" id="pw">&#9888;&#65039; Izinkan POP-UP di browser agar bot bisa membuka tab otomatis!</div>
 
-<div class="content" id="content">
+<div class="content">
 
   <!-- MSN ENGINE -->
   <div class="ecard" id="cardM">
     <div class="chead">
       <div class="brow"><span class="badge">MSN ENGINE</span><span class="olbl" id="lblM">OFF</span></div>
-      <div class="tpill" id="togM" onclick="toggleEng('M')"></div>
+      <div class="tpill" onclick="toggleEng('M')"></div>
     </div>
     <div class="cbody">
       <label class="flbl">TARGET BACA</label>
@@ -180,15 +173,21 @@ footer{flex-shrink:0;background:var(--bg);border-top:1px solid var(--bdr);paddin
         <div class="mlbl">MSN MISSION</div>
       </div>
       <div class="bar"><div class="fill" id="fillM"></div></div>
+      <!-- Visual: Human-like scroll simulation (MSN) -->
       <div class="prev" id="prevM">
         <div class="pi" id="innerM">
           <div class="pl f"></div><div class="pl l"></div><div class="pl m"></div>
           <div class="pl f"></div><div class="pl s"></div><div class="pl l"></div>
           <div class="pl f"></div><div class="pl m"></div><div class="pl l"></div>
           <div class="pl f"></div><div class="pl s"></div><div class="pl m"></div>
-          <div class="pl f"></div><div class="pl l"></div>
+          <div class="pl f"></div><div class="pl l"></div><div class="pl f"></div>
         </div>
         <div class="pcur"></div>
+      </div>
+      <div class="bhv" id="bhvM">
+        <span class="btag" id="tagMscroll">&#8595; Human Scroll</span>
+        <span class="btag" id="tagMread">&#9201; Read Timer</span>
+        <span class="btag" id="tagMclose">&#10005; Auto Close</span>
       </div>
     </div>
   </div>
@@ -197,7 +196,7 @@ footer{flex-shrink:0;background:var(--bg);border-top:1px solid var(--bdr);paddin
   <div class="ecard bing" id="cardB">
     <div class="chead">
       <div class="brow"><span class="badge">BING ENGINE</span><span class="olbl" id="lblB">OFF</span></div>
-      <div class="tpill" id="togB" onclick="toggleEng('B')"></div>
+      <div class="tpill" onclick="toggleEng('B')"></div>
     </div>
     <div class="cbody">
       <label class="flbl">TARGET PENCARIAN</label>
@@ -226,23 +225,30 @@ footer{flex-shrink:0;background:var(--bg);border-top:1px solid var(--bdr);paddin
         <div class="mlbl">BING MISSION</div>
       </div>
       <div class="bar"><div class="fill" id="fillB"></div></div>
+      <!-- Visual: Human-like click simulation (Bing) -->
       <div class="prev" id="prevB">
         <div class="pi" id="innerB">
           <div class="pl f"></div><div class="pl l"></div><div class="pl m"></div>
           <div class="pl f"></div><div class="pl s"></div><div class="pl l"></div>
           <div class="pl f"></div><div class="pl m"></div><div class="pl l"></div>
           <div class="pl f"></div><div class="pl s"></div><div class="pl m"></div>
-          <div class="pl f"></div><div class="pl l"></div>
+          <div class="pl f"></div><div class="pl l"></div><div class="pl f"></div>
         </div>
+        <div class="click-flash" id="clickFlash"></div>
         <div class="pcur"></div>
+      </div>
+      <div class="bhv" id="bhvB">
+        <span class="btag" id="tagBsearch">&#128269; Auto Search</span>
+        <span class="btag" id="tagBclick">&#128073; Random Click</span>
+        <span class="btag" id="tagBcvid">&#128273; CVID Spoof</span>
       </div>
     </div>
   </div>
 
-  <!-- LOG -->
+  <!-- ACTIVITY LOG -->
   <div class="lcard">
     <div class="ltitle">&#128203; Activity Log</div>
-    <div class="lbox" id="logBox"><div class="le">&mdash; Siap menjalankan misi &mdash;</div></div>
+    <div class="lbox" id="logBox"><div class="le">&#8212; Siap menjalankan misi &#8212;</div></div>
   </div>
 
   <!-- FINISH -->
@@ -250,7 +256,6 @@ footer{flex-shrink:0;background:var(--bg);border-top:1px solid var(--bdr);paddin
     <h3>&#127942; MISI BERHASIL SELESAI!</h3>
     <p>Semua target MSN &amp; Bing telah tercapai</p>
   </div>
-
   <div style="height:4px;flex-shrink:0"></div>
 </div>
 
@@ -264,74 +269,537 @@ footer{flex-shrink:0;background:var(--bg);border-top:1px solid var(--bdr);paddin
 </footer>
 
 <script>
-const me=sessionStorage.getItem('tbUser');
-if(!me) window.location.href='login.html';
-else document.getElementById('wbar').textContent='Selamat datang, '+me+' \uD83D\uDC7E';
+/* ══════════════════════════════════════════════════
+   AUTH
+══════════════════════════════════════════════════ */
+const me = sessionStorage.getItem('tbUser');
+if (!me) window.location.href = 'login.html';
+else document.getElementById('wbar').textContent = 'Selamat datang, ' + me + ' \uD83D\uDC7E';
 
-const MSN_LINKS=["https://www.msn.com/en-gb/health/nutrition/ultra-processed-foods-have-more-in-common-with-cigarettes-than-fruit/ar-AA1Vz4Fg","https://www.msn.com/en-gb/entertainment/tv/jeremy-clarkson-reveals-filming-for-clarkson-s-farm-has-stopped/ar-AA1X2iJn","https://www.msn.com/en-gb/cars/news/councils-ban-20-too-big-vehicles-from-car-parks-in-2026-full-list/ar-AA1W3uce","https://www.msn.com/en-gb/money/other/households-urged-to-never-plug-5-everyday-appliances-into-extension-leads-or-risk-fire/ar-AA1X1ezu","https://www.msn.com/en-gb/money/other/trump-s-iran-strikes-threaten-to-send-petrol-prices-soaring-and-rip-through-global-trade/ar-AA1Xgsr1","https://www.msn.com/en-gb/foodanddrink/other/i-asked-chefs-what-the-best-supermarket-butter-is-they-both-said-the-same-thing/ar-AA1VXajc","https://www.msn.com/en-gb/money/other/the-0-01pc-rule-that-could-transform-your-spending/ar-AA1Np9WX","https://www.msn.com/en-gb/sport/motorsports/formula-one-to-revise-controversial-rule-at-centre-of-mercedes-engine-row/ar-AA1Xg1kU","https://www.msn.com/en-gb/news/world/blaze-breaks-out-at-luxury-dubai-hotel-during-iran-air-attack/ar-AA1XgzNO","https://www.msn.com/en-gb/health/nutrition/how-dark-chocolate-can-protect-your-heart-gut-and-brain-and-the-best-bars-to-buy/ar-AA1XfJBW","https://www.msn.com/en-gb/news/world/lost-continent-unlike-anything-found-today-discovered-off-the-coast-of-australia/ar-AA1X2znl","https://www.msn.com/en-gb/news/uknews/uk-should-resist-being-dragged-into-war-after-iran-strikes-says-labour-mp/ar-AA1XfINB","https://www.msn.com/en-gb/health/other/this-is-the-struggling-capital-of-old-age-britain-soon-the-whole-country-will-be-the-same/ar-AA1Xfn4y","https://www.msn.com/en-gb/weather/topstories/met-office-names-uk-areas-facing-snow-on-sunday/ar-AA1Xe9YG","https://www.msn.com/en-gb/foodanddrink/other/the-30-best-breakfasts-in-london/ar-BB1qPDT8","https://www.msn.com/en-gb/news/uknews/farage-and-badenoch-back-trump-after-labour-mps-say-iran-strikes-unlawful/ar-AA1Xg5ws","https://www.msn.com/en-gb/lifestyle/family/what-viral-monkey-punch-teaches-us-about-gentle-parenting/ar-AA1X9ddK","https://www.msn.com/en-gb/health/other/the-science-behind-rfk-jr-s-new-diet-advice-and-it-s-not-all-wild/ar-AA1TWkcF","https://www.msn.com/en-gb/sport/football/man-city-xi-vs-leeds-starting-lineup-and-confirmed-team-news/ar-AA1X7xQr","https://www.msn.com/en-gb/foodanddrink/recipes/individual-toad-in-the-hole/ar-AA1PRoBJ","https://www.msn.com/en-gb/cars/news/20-cars-that-aren-t-as-good-as-you-think/ss-AA1PQJPT","https://www.msn.com/en-gb/lifestyle/shopping/gamercard-review-get-your-retro-fix-with-this-no-frills-device/ar-AA1VYGWQ","https://www.msn.com/en-gb/news/world/us-attack-on-iran-is-moment-of-extreme-peril-for-world-with-the-uk-impacted/ar-AA1XgkXi","https://www.msn.com/en-gb/travel/news/easter-s-cheapest-holiday-destination-is-4-hours-from-uk-with-25c-and-2-pints/ar-AA1WUJCi","https://www.msn.com/en-gb/cars/news/the-brilliant-car-designs-of-giorgetto-giugiaro/ss-AA1T6rkG","https://www.msn.com/en-gb/news/world/can-the-us-force-regime-change-upon-iran-and-depose-the-ayatollah/ar-AA1XfIDK","https://www.msn.com/en-gb/money/other/state-pension-age-rise-from-april-for-people-born-in-these-years/ar-AA1Xgalj","https://www.msn.com/en-gb/news/world/big-blasts-heard-over-dubai-as-people-run-for-cover-from-iranian-missiles/ar-AA1XghLS","https://www.msn.com/en-gb/health/other/study-claims-this-simple-brain-exercise-can-cut-dementia-risk-by-25/ar-AA1W1IlD","https://www.msn.com/en-gb/news/world/gibraltar-military-base-subject-to-eu-weapons-checks/ar-AA1Xcc7u","https://www.msn.com/en-gb/cars/news/the-best-ever-shooting-brakes/ss-AA1WM9Zx","https://www.msn.com/en-gb/cars/news/modern-car-headlights-are-blinding-britain-s-drivers/ar-AA1PkwUL"];
-const BING_WORDS=["resep sahur praktis kenyang lama","jadwal imsakiyah ramadhan terbaru","tips menjaga stamina puasa","menu buka puasa sehat","cara khatam quran sebulan","manfaat sedekah di bulan ramadhan","keutamaan malam lailatul qadar","resep kolak pisang enak","persiapan mudik lebaran aman","promo tiket kereta mudik","cara membuat ketupat lebaran","tips hemat belanja ramadhan","olahraga ringan saat puasa","manfaat buah kurma kesehatan","cara mengatur waktu tidur","baju lebaran terbaru 2026","niat puasa ramadhan lengkap","doa buka puasa shahih","tata cara shalat tarawih","kumpulan kultum ramadhan singkat","zakat fitrah online terpercaya","cara membuat kue kering","resep opor ayam lebaran","tradisi ramadhan di nusantara","tips kulit sehat saat puasa","resep minuman segar buka puasa","cara mengelola keuangan ramadhan","jadwal buka puasa jakarta","tempat wisata religi populer","resep masakan daging sapi","tips diet sehat ramadhan","cara mengatasi bau mulut","manfaat puasa bagi lambung","ide bisnis jualan takjil","resep rendang asli padang","cara membuat hampers lebaran","doa harian bulan ramadhan","tata cara shalat ied","hukum sikat gigi puasa","cara menahan haus saat puasa","resep es buah segar","tips mudik pakai mobil","harga kurma ajwa terbaru","kumpulan ucapan selamat lebaran","cara bayar zakat mal","resep nastar lembut lumer","tips dekorasi rumah lebaran","manfaat madu untuk puasa","cara menjaga kesehatan mata","tips belajar saat puasa","resep sambal goreng ati","cara membuat kartu lebaran","jadwal kajian ramadhan online","resep ayam bakar madu","tips packing baju mudik","cara melatih anak puasa","resep puding coklat sutra","manfaat air putih cukup","cara cegah asam lambung","tips belanja baju lebaran","resep bakso sapi kenyal","cara simpan sayuran awet","tips wajah glowing ramadhan","resep soto ayam bening","cara bersihkan masjid musholla","tips aman meninggalkan rumah","resep sate kambing empuk","cara membuat ketupat janur","tips mengatur porsi makan","manfaat itikaf di masjid","resep es kelapa muda","cara hilangkan ngantuk puasa","tips berkendara malam hari","resep martabak telur mini","cara menabung untuk lebaran","manfaat jalan kaki pagi","resep sayur lodeh gurih","resep ayam goreng serundeng","resep jus alpukat kental","resep pindang ikan patin","resep seblak pedas nikmat"];
+/* ══════════════════════════════════════════════════
+   MASTER DATA — satu tempat, tidak duplikat
+══════════════════════════════════════════════════ */
+const MASTER_LINKS = [
+  "https://www.msn.com/en-gb/health/nutrition/ultra-processed-foods-have-more-in-common-with-cigarettes-than-fruit/ar-AA1Vz4Fg",
+  "https://www.msn.com/en-gb/entertainment/tv/jeremy-clarkson-reveals-filming-for-clarkson-s-farm-has-stopped/ar-AA1X2iJn",
+  "https://www.msn.com/en-gb/cars/news/councils-ban-20-too-big-vehicles-from-car-parks-in-2026-full-list/ar-AA1W3uce",
+  "https://www.msn.com/en-gb/money/other/households-urged-to-never-plug-5-everyday-appliances-into-extension-leads-or-risk-fire/ar-AA1X1ezu",
+  "https://www.msn.com/en-gb/money/other/trump-s-iran-strikes-threaten-to-send-petrol-prices-soaring-and-rip-through-global-trade/ar-AA1Xgsr1",
+  "https://www.msn.com/en-gb/foodanddrink/other/i-asked-chefs-what-the-best-supermarket-butter-is-they-both-said-the-same-thing/ar-AA1VXajc",
+  "https://www.msn.com/en-gb/money/other/the-0-01pc-rule-that-could-transform-your-spending/ar-AA1Np9WX",
+  "https://www.msn.com/en-gb/sport/motorsports/formula-one-to-revise-controversial-rule-at-centre-of-mercedes-engine-row/ar-AA1Xg1kU",
+  "https://www.msn.com/en-gb/news/world/blaze-breaks-out-at-luxury-dubai-hotel-during-iran-air-attack/ar-AA1XgzNO",
+  "https://www.msn.com/en-gb/health/nutrition/how-dark-chocolate-can-protect-your-heart-gut-and-brain-and-the-best-bars-to-buy/ar-AA1XfJBW",
+  "https://www.msn.com/en-gb/news/world/lost-continent-unlike-anything-found-today-discovered-off-the-coast-of-australia/ar-AA1X2znl",
+  "https://www.msn.com/en-gb/news/uknews/uk-should-resist-being-dragged-into-war-after-iran-strikes-says-labour-mp/ar-AA1XfINB",
+  "https://www.msn.com/en-gb/health/other/this-is-the-struggling-capital-of-old-age-britain-soon-the-whole-country-will-be-the-same/ar-AA1Xfn4y",
+  "https://www.msn.com/en-gb/weather/topstories/met-office-names-uk-areas-facing-snow-on-sunday/ar-AA1Xe9YG",
+  "https://www.msn.com/en-gb/foodanddrink/other/the-30-best-breakfasts-in-london/ar-BB1qPDT8",
+  "https://www.msn.com/en-gb/news/uknews/farage-and-badenoch-back-trump-after-labour-mps-say-iran-strikes-unlawful/ar-AA1Xg5ws",
+  "https://www.msn.com/en-gb/lifestyle/family/what-viral-monkey-punch-teaches-us-about-gentle-parenting/ar-AA1X9ddK",
+  "https://www.msn.com/en-gb/health/other/the-science-behind-rfk-jr-s-new-diet-advice-and-it-s-not-all-wild/ar-AA1TWkcF",
+  "https://www.msn.com/en-gb/sport/football/man-city-xi-vs-leeds-starting-lineup-and-confirmed-team-news/ar-AA1X7xQr",
+  "https://www.msn.com/en-gb/foodanddrink/recipes/individual-toad-in-the-hole/ar-AA1PRoBJ",
+  "https://www.msn.com/en-gb/cars/news/20-cars-that-aren-t-as-good-as-you-think/ss-AA1PQJPT",
+  "https://www.msn.com/en-gb/lifestyle/shopping/gamercard-review-get-your-retro-fix-with-this-no-frills-device/ar-AA1VYGWQ",
+  "https://www.msn.com/en-gb/news/world/us-attack-on-iran-is-moment-of-extreme-peril-for-world-with-the-uk-impacted/ar-AA1XgkXi",
+  "https://www.msn.com/en-gb/travel/news/easter-s-cheapest-holiday-destination-is-4-hours-from-uk-with-25c-and-2-pints/ar-AA1WUJCi",
+  "https://www.msn.com/en-gb/cars/news/the-brilliant-car-designs-of-giorgetto-giugiaro/ss-AA1T6rkG",
+  "https://www.msn.com/en-gb/news/world/can-the-us-force-regime-change-upon-iran-and-depose-the-ayatollah/ar-AA1XfIDK",
+  "https://www.msn.com/en-gb/money/other/state-pension-age-rise-from-april-for-people-born-in-these-years/ar-AA1Xgalj",
+  "https://www.msn.com/en-gb/news/world/big-blasts-heard-over-dubai-as-people-run-for-cover-from-iranian-missiles/ar-AA1XghLS",
+  "https://www.msn.com/en-gb/health/other/study-claims-this-simple-brain-exercise-can-cut-dementia-risk-by-25/ar-AA1W1IlD",
+  "https://www.msn.com/en-gb/news/world/gibraltar-military-base-subject-to-eu-weapons-checks/ar-AA1Xcc7u",
+  "https://www.msn.com/en-gb/cars/news/the-best-ever-shooting-brakes/ss-AA1WM9Zx",
+  "https://www.msn.com/en-gb/cars/news/modern-car-headlights-are-blinding-britain-s-drivers/ar-AA1PkwUL"
+];
 
-let enM=false,enB=false,linksM=[],wordsB=[],cM=0,cB=0,msnR=false,bingR=false,isPaused=false,isRunning=false,tMain=null,tSafe=null,activeWin=null,scrollTs=[],popW=false;
+const MASTER_WORDS = [
+  "resep sahur praktis kenyang lama","jadwal imsakiyah ramadhan terbaru","tips menjaga stamina puasa",
+  "menu buka puasa sehat","cara khatam quran sebulan","manfaat sedekah di bulan ramadhan",
+  "keutamaan malam lailatul qadar","resep kolak pisang enak","persiapan mudik lebaran aman",
+  "promo tiket kereta mudik","cara membuat ketupat lebaran","tips hemat belanja ramadhan",
+  "olahraga ringan saat puasa","manfaat buah kurma kesehatan","cara mengatur waktu tidur",
+  "baju lebaran terbaru 2026","niat puasa ramadhan lengkap","doa buka puasa shahih",
+  "tata cara shalat tarawih","kumpulan kultum ramadhan singkat","zakat fitrah online terpercaya",
+  "cara membuat kue kering","resep opor ayam lebaran","tradisi ramadhan di nusantara",
+  "tips kulit sehat saat puasa","resep minuman segar buka puasa","cara mengelola keuangan ramadhan",
+  "jadwal buka puasa jakarta","tempat wisata religi populer","resep masakan daging sapi",
+  "tips diet sehat ramadhan","cara mengatasi bau mulut","manfaat puasa bagi lambung",
+  "ide bisnis jualan takjil","resep rendang asli padang","cara membuat hampers lebaran",
+  "doa harian bulan ramadhan","tata cara shalat ied","hukum sikat gigi puasa",
+  "cara menahan haus saat puasa","resep es buah segar","tips mudik pakai mobil",
+  "harga kurma ajwa terbaru","kumpulan ucapan selamat lebaran","cara bayar zakat mal",
+  "resep nastar lembut lumer","tips dekorasi rumah lebaran","manfaat madu untuk puasa",
+  "cara menjaga kesehatan mata","tips belajar saat puasa","resep sambal goreng ati",
+  "cara membuat kartu lebaran","jadwal kajian ramadhan online","resep ayam bakar madu",
+  "tips packing baju mudik","cara melatih anak puasa","resep puding coklat sutra",
+  "manfaat air putih cukup","cara cegah asam lambung","tips belanja baju lebaran",
+  "resep bakso sapi kenyal","cara simpan sayuran awet","tips wajah glowing ramadhan",
+  "resep soto ayam bening","cara bersihkan masjid musholla","tips aman meninggalkan rumah",
+  "resep sate kambing empuk","cara membuat ketupat janur","tips mengatur porsi makan",
+  "manfaat itikaf di masjid","resep es kelapa muda","cara hilangkan ngantuk puasa",
+  "tips berkendara malam hari","resep martabak telur mini","cara menabung untuk lebaran",
+  "manfaat jalan kaki pagi","resep sayur lodeh gurih","resep ayam goreng serundeng",
+  "resep jus alpukat kental","resep pindang ikan patin","resep seblak pedas nikmat"
+];
 
-function step(id,d){const el=document.getElementById(id);el.value=Math.max(1,Math.min(120,(parseInt(el.value)||1)+d));}
+/* ══════════════════════════════════════════════════
+   STATE
+══════════════════════════════════════════════════ */
+let enM = false, enB = false;
+// Working copies — diisi ulang dari MASTER tanpa tulis ulang
+let wordsM = [], wordsB = [];
+let cM = 0, cB = 0;
+let msnR = false, bingR = false, isPaused = false, isRunning = false;
+let tMain = null, tSafe = null, activeWin = null;
+let scrollTs = [], popW = false;
 
-function toggleEng(t){
-  if(isRunning)return;
-  if(t==='M'){enM=!enM;document.getElementById('cardM').classList.toggle('on',enM);document.getElementById('lblM').textContent=enM?'ON':'OFF';}
-  else{enB=!enB;document.getElementById('cardB').classList.toggle('on',enB);document.getElementById('lblB').textContent=enB?'ON':'OFF';}
+/* ══════════════════════════════════════════════════
+   SUPER SHUFFLE — triple random (crypto + Math.random)
+══════════════════════════════════════════════════ */
+function superShuffle(arr) {
+  let a = [...arr];
+  // Pass 1: crypto random
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = crypto.getRandomValues(new Uint32Array(1))[0] % (i + 1);
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  // Pass 2 & 3: Math.random
+  a.sort(() => Math.random() - 0.5);
+  a.sort(() => Math.random() - 0.5);
+  return a;
 }
 
-document.getElementById('tgtM').addEventListener('input',function(){document.getElementById('ofM').textContent='/'+( this.value||0);});
-document.getElementById('tgtB').addEventListener('input',function(){document.getElementById('ofB').textContent='/'+( this.value||0);});
+/* ══════════════════════════════════════════════════
+   GENERATE CVID — random 32-char hex (anti-deteksi)
+══════════════════════════════════════════════════ */
+function generateCVID() {
+  return Array.from(crypto.getRandomValues(new Uint8Array(16)))
+    .map(b => b.toString(16).padStart(2, '0'))
+    .join('')
+    .toUpperCase();
+}
 
-function startScroll(id,mode){stopScroll();const el=document.getElementById(id);const LH=12;const seq=mode==='msn'?[0,LH*3,LH*6,LH*9,LH*6,LH*3,0]:[0,LH*3,LH*6,LH*9,LH*12,0];let i=0;const tick=()=>{el.style.transform='translateY(-'+seq[i]+'px)';i=(i+1)%seq.length;scrollTs.push(setTimeout(tick,2000));};tick();}
-function stopScroll(){scrollTs.forEach(clearTimeout);scrollTs=[];}
-function resetScroll(id){stopScroll();const el=document.getElementById(id);if(el)el.style.transform='translateY(0)';}
+/* ══════════════════════════════════════════════════
+   HUMAN-LIKE SCROLL ANIMATION (visual di preview MSN)
+   Mirip fungsi humanLikeScroll() — scroll acak 100-400px
+   setiap 2-4 detik, berhenti setelah ~10 langkah
+══════════════════════════════════════════════════ */
+function humanLikeScrollAnim(innerId) {
+  clearScrollAnim();
+  const el = document.getElementById(innerId);
+  let step = 0;
+  const MAX_STEPS = 10;
+  let totalY = 0;
+  const LINE_H = 13; // px per baris
 
-function shuffle(arr){let a=[...arr];for(let i=a.length-1;i>0;i--){const j=crypto.getRandomValues(new Uint32Array(1))[0]%(i+1);[a[i],a[j]]=[a[j],a[i]];}for(let k=0;k<3;k++)a.sort(()=>Math.random()-.5);return a;}
-function cvid(){return Array.from(crypto.getRandomValues(new Uint8Array(16))).map(b=>b.toString(16).padStart(2,'0')).join('').toUpperCase();}
-function rand(a,b){return Math.floor(Math.random()*(b-a+1)+a);}
+  const tick = () => {
+    if (step >= MAX_STEPS) {
+      // Selesai membaca — scroll balik ke atas (reset)
+      el.style.transition = 'transform 0.8s ease';
+      el.style.transform = 'translateY(0)';
+      totalY = 0; step = 0;
+      // Ulangi setelah jeda singkat
+      const t = setTimeout(tick, 1500);
+      scrollTs.push(t);
+      return;
+    }
+    // Jarak scroll acak: 1-3 baris (mirip 100-300px di halaman nyata)
+    const baris = Math.floor(Math.random() * 3) + 1;
+    totalY = Math.min(totalY + baris * LINE_H, 11 * LINE_H);
+    el.style.transition = 'transform 0.55s cubic-bezier(0.4,0,0.2,1)';
+    el.style.transform = 'translateY(-' + totalY + 'px)';
+    step++;
+    // Delay acak 2000-4000ms (mirip humanLikeScroll interval)
+    const delay = Math.floor(Math.random() * 2000) + 2000;
+    const t = setTimeout(tick, delay);
+    scrollTs.push(t);
+  };
+  tick();
+}
 
-function log(msg,cls){const box=document.getElementById('logBox');const ts=new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit',second:'2-digit'});const d=document.createElement('div');d.className='le '+(cls||'');d.textContent='['+ts+'] '+msg;box.appendChild(d);box.scrollTop=box.scrollHeight;}
-function setStat(id,txt,cls){document.getElementById('stat'+id).className='stat '+(cls||'');document.getElementById('stat'+id+'t').textContent=txt;}
-function setAll(dis){document.querySelectorAll('.bi,.si,.sb').forEach(el=>el.disabled=dis);}
-function closeWin(){if(activeWin){try{activeWin.close();}catch(e){}activeWin=null;}}
-function openUrl(url){try{activeWin=window.open(url,'_blank');if(!activeWin&&!popW){popW=true;document.getElementById('pw').classList.add('on');log('Popup diblokir! Izinkan di browser.','gold');}}catch(e){}}
+/* ══════════════════════════════════════════════════
+   RANDOM CLICK ANIMATION (visual di preview Bing)
+   Mirip fungsi randomBingClick() — klik elemen acak
+   setelah 1-3 detik, visualisasikan dengan click flash
+══════════════════════════════════════════════════ */
+function randomBingClickAnim(innerId) {
+  clearScrollAnim();
+  const el = document.getElementById(innerId);
+  const flash = document.getElementById('clickFlash');
+  let step = 0;
 
-function launch(){
-  if(!enM&&!enB){alert('Aktifkan minimal satu Engine!\nKlik toggle ON pada MSN atau BING ENGINE.');return;}
-  linksM=shuffle(MSN_LINKS);wordsB=shuffle(BING_WORDS);cM=0;cB=0;isRunning=true;isPaused=false;popW=false;
-  ['M','B'].forEach(t=>{document.getElementById('done'+t).textContent=0;document.getElementById('fill'+t).style.width='0%';document.getElementById('card'+t).classList.remove('done','running');});
-  document.getElementById('ofM').textContent='/'+document.getElementById('tgtM').value;
-  document.getElementById('ofB').textContent='/'+document.getElementById('tgtB').value;
+  const scrollTick = () => {
+    // Scroll hasil pencarian ke bawah perlahan
+    const baris = Math.floor(Math.random() * 2) + 1;
+    const curr = parseFloat(el.style.transform.replace('translateY(','').replace('px)','')) || 0;
+    const next = Math.min(Math.abs(curr) + baris * 13, 9 * 13);
+    el.style.transition = 'transform 0.5s ease';
+    el.style.transform = 'translateY(-' + next + 'px)';
+    step++;
+
+    if (step === 3 && flash) {
+      // Simulasi klik pada hasil pencarian (setelah membaca 3 baris)
+      const delay = Math.floor(Math.random() * 2000) + 1000;
+      const t = setTimeout(() => {
+        if (!flash) return;
+        // Posisi klik acak dalam preview box
+        flash.style.left = (20 + Math.random() * 60) + '%';
+        flash.style.top = (20 + Math.random() * 50) + '%';
+        flash.classList.remove('fire');
+        void flash.offsetWidth; // reflow
+        flash.classList.add('fire');
+        log('Bing \u2192 klik hasil pencarian...', 'c');
+      }, delay);
+      scrollTs.push(t);
+    }
+
+    if (step < 6) {
+      const t = setTimeout(scrollTick, Math.floor(Math.random() * 1500) + 1000);
+      scrollTs.push(t);
+    } else {
+      // Reset
+      el.style.transition = 'transform 0.6s ease';
+      el.style.transform = 'translateY(0)';
+      step = 0;
+      const t = setTimeout(scrollTick, 2000);
+      scrollTs.push(t);
+    }
+  };
+  scrollTick();
+}
+
+function clearScrollAnim() {
+  scrollTs.forEach(clearTimeout);
+  scrollTs = [];
+}
+function resetPreview(id) {
+  const el = document.getElementById(id);
+  if (el) { el.style.transition = 'none'; el.style.transform = 'translateY(0)'; }
+}
+
+/* ══════════════════════════════════════════════════
+   HELPERS
+══════════════════════════════════════════════════ */
+function rand(a, b) { return Math.floor(Math.random() * (b - a + 1) + a); }
+
+function log(msg, cls) {
+  const box = document.getElementById('logBox');
+  const ts = new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  const d = document.createElement('div');
+  d.className = 'le ' + (cls || '');
+  d.textContent = '[' + ts + '] ' + msg;
+  box.appendChild(d);
+  box.scrollTop = box.scrollHeight;
+}
+
+function setStat(id, txt, cls) {
+  document.getElementById('stat' + id).className = 'stat ' + (cls || '');
+  document.getElementById('stat' + id + 't').textContent = txt;
+}
+
+function setBadges(prefix, active) {
+  document.querySelectorAll('#bhv' + prefix + ' .btag').forEach(el => {
+    el.classList.toggle('active', active);
+  });
+}
+
+function setAll(dis) {
+  document.querySelectorAll('.bi,.si,.sb').forEach(el => el.disabled = dis);
+}
+
+function closeWin() {
+  if (activeWin) { try { activeWin.close(); } catch (e) {} activeWin = null; }
+}
+
+function openUrl(url) {
+  try {
+    activeWin = window.open(url, '_blank');
+    if (!activeWin && !popW) {
+      popW = true;
+      document.getElementById('pw').classList.add('on');
+      log('Popup diblokir! Izinkan di browser.', 'gold');
+    }
+  } catch (e) {}
+}
+
+/* ══════════════════════════════════════════════════
+   TOGGLE ENGINE
+══════════════════════════════════════════════════ */
+function toggleEng(t) {
+  if (isRunning) return;
+  if (t === 'M') {
+    enM = !enM;
+    document.getElementById('cardM').classList.toggle('on', enM);
+    document.getElementById('lblM').textContent = enM ? 'ON' : 'OFF';
+  } else {
+    enB = !enB;
+    document.getElementById('cardB').classList.toggle('on', enB);
+    document.getElementById('lblB').textContent = enB ? 'ON' : 'OFF';
+  }
+}
+
+/* Sync /X display */
+document.getElementById('tgtM').addEventListener('input', function () {
+  document.getElementById('ofM').textContent = '/' + (this.value || 0);
+});
+document.getElementById('tgtB').addEventListener('input', function () {
+  document.getElementById('ofB').textContent = '/' + (this.value || 0);
+});
+
+/* ══════════════════════════════════════════════════
+   STEPPER
+══════════════════════════════════════════════════ */
+function step(id, d) {
+  const el = document.getElementById(id);
+  el.value = Math.max(1, Math.min(120, (parseInt(el.value) || 1) + d));
+}
+
+/* ══════════════════════════════════════════════════
+   LAUNCH
+══════════════════════════════════════════════════ */
+function launch() {
+  if (!enM && !enB) {
+    alert('Aktifkan minimal satu Engine!\nKlik toggle ON pada MSN atau BING ENGINE.');
+    return;
+  }
+  // Isi working copy dari MASTER (tidak tulis ulang MASTER)
+  wordsM = superShuffle([...MASTER_LINKS]);
+  wordsB = superShuffle([...MASTER_WORDS]);
+  cM = 0; cB = 0; isRunning = true; isPaused = false; popW = false;
+
+  ['M', 'B'].forEach(t => {
+    document.getElementById('done' + t).textContent = 0;
+    document.getElementById('fill' + t).style.width = '0%';
+    document.getElementById('card' + t).classList.remove('done', 'running');
+    setBadges(t, false);
+  });
+  document.getElementById('ofM').textContent = '/' + document.getElementById('tgtM').value;
+  document.getElementById('ofB').textContent = '/' + document.getElementById('tgtB').value;
   document.getElementById('finBanner').classList.remove('on');
   document.getElementById('pw').classList.remove('on');
-  setStat('M','Standby...','');setStat('B',enM?'Menunggu MSN...':'Siap...','');
+  setStat('M', 'Standby...', '');
+  setStat('B', enM ? 'Menunggu MSN...' : 'Siap...', '');
+
   setAll(true);
   document.getElementById('btnMulai').classList.remove('on');
   document.getElementById('jrRow').classList.add('on');
-  document.getElementById('btnJeda').textContent='JEDA';
+  document.getElementById('btnJeda').textContent = 'JEDA';
   document.getElementById('btnJeda').classList.remove('paused');
-  log('MISI DIMULAI','gold');
-  if(enM){msnR=true;document.getElementById('cardM').classList.add('running');document.getElementById('prevM').classList.add('on');runMsn();}
-  else{bingR=true;document.getElementById('cardB').classList.add('running');document.getElementById('prevB').classList.add('on');runBing();}
+
+  log('MISI DIMULAI', 'gold');
+
+  if (enM) {
+    msnR = true;
+    document.getElementById('cardM').classList.add('running');
+    document.getElementById('prevM').classList.add('on');
+    setBadges('M', true);
+    runMsn();
+  } else {
+    bingR = true;
+    document.getElementById('cardB').classList.add('running');
+    document.getElementById('prevB').classList.add('on');
+    setBadges('B', true);
+    runBing();
+  }
 }
 
-function runMsn(){if(isPaused||!msnR)return;if(!linksM.length)linksM=shuffle(MSN_LINKS);const wait=rand(parseInt(document.getElementById('minM').value)||8,parseInt(document.getElementById('maxM').value)||15)*1000;const url=linksM.pop();setStat('M','Membaca artikel MSN...','live');log('MSN artikel #'+(cM+1),'c');startScroll('innerM','msn');openUrl(url);clearTimeout(tMain);clearTimeout(tSafe);tMain=setTimeout(nextM,wait);tSafe=setTimeout(nextM,wait+4000);}
-function nextM(){clearTimeout(tMain);clearTimeout(tSafe);resetScroll('innerM');closeWin();cM++;document.getElementById('doneM').textContent=cM;const tgt=parseInt(document.getElementById('tgtM').value);document.getElementById('fillM').style.width=(cM/tgt*100)+'%';log('MSN '+cM+'/'+tgt,'g');if(cM<tgt){setStat('M','Jeda...','');tMain=setTimeout(runMsn,2500);}else{msnR=false;document.getElementById('cardM').classList.remove('running');document.getElementById('cardM').classList.add('done');document.getElementById('prevM').classList.remove('on');setStat('M','MSN Selesai!','ok');log('MSN SELESAI','gold');if(enB){const cd=rand(4,7)*1000;setStat('B','Cooldown '+(cd/1000)+' dtk...','');setTimeout(()=>{bingR=true;document.getElementById('cardB').classList.add('running');document.getElementById('prevB').classList.add('on');runBing();},cd);}else finishAll();}}
+/* ══════════════════════════════════════════════════
+   MSN ENGINE — dengan humanLikeScroll visual
+══════════════════════════════════════════════════ */
+function runMsn() {
+  if (isPaused || !msnR) return;
+  // Isi ulang dari MASTER jika habis (tanpa menulis ulang list)
+  if (wordsM.length === 0) wordsM = superShuffle([...MASTER_LINKS]);
 
-function runBing(){if(isPaused||!bingR)return;if(!wordsB.length)wordsB=shuffle(BING_WORDS);const wait=rand(parseInt(document.getElementById('minB').value)||8,parseInt(document.getElementById('maxB').value)||15)*1000;const q=wordsB.pop();const url='https://www.bing.com/search?q='+encodeURIComponent(q)+'&qs=n&form=QBRE&cvid='+cvid();setStat('B','Mencari: '+q,'live');log('Bing: '+q,'c');startScroll('innerB','bing');openUrl(url);clearTimeout(tMain);clearTimeout(tSafe);tMain=setTimeout(nextB,wait);tSafe=setTimeout(nextB,wait+5000);}
-function nextB(){clearTimeout(tMain);clearTimeout(tSafe);resetScroll('innerB');closeWin();cB++;document.getElementById('doneB').textContent=cB;const tgt=parseInt(document.getElementById('tgtB').value);document.getElementById('fillB').style.width=(cB/tgt*100)+'%';log('Bing '+cB+'/'+tgt,'g');if(cB<tgt){setStat('B','Jeda...','');tMain=setTimeout(runBing,2000);}else finishAll();}
+  const vMin = parseInt(document.getElementById('minM').value) || 8;
+  const vMax = parseInt(document.getElementById('maxM').value) || 15;
+  const vTime = rand(vMin, vMax) * 1000;
 
-function togglePause(){isPaused=!isPaused;const btn=document.getElementById('btnJeda');if(isPaused){clearTimeout(tMain);clearTimeout(tSafe);stopScroll();btn.textContent='LANJUT';btn.classList.add('paused');if(msnR)setStat('M','Dijeda...','');if(bingR)setStat('B','Dijeda...','');log('Dijeda.','gold');}else{btn.textContent='JEDA';btn.classList.remove('paused');log('Dilanjutkan.','gold');if(msnR)runMsn();else if(bingR)runBing();}}
+  const url = wordsM.pop();
 
-function stopAll(){if(!confirm('Reset dan hentikan misi?'))return;clearTimeout(tMain);clearTimeout(tSafe);stopScroll();closeWin();msnR=false;bingR=false;isPaused=false;isRunning=false;setStat('M','Standby...','');setStat('B','Menunggu MSN...','');['M','B'].forEach(t=>{document.getElementById('card'+t).classList.remove('running','done');document.getElementById('prev'+t).classList.remove('on');document.getElementById('done'+t).textContent=0;document.getElementById('fill'+t).style.width='0%';});document.getElementById('finBanner').classList.remove('on');log('Direset.','gold');resetCtrl();}
+  setStat('M', '\uD83C\uDF10 Membaca artikel MSN...', 'live');
+  log('MSN \u2192 artikel #' + (cM + 1), 'c');
 
-function finishAll(){closeWin();stopScroll();msnR=false;bingR=false;isRunning=false;document.getElementById('cardB').classList.remove('running');document.getElementById('cardB').classList.add('done');document.getElementById('prevB').classList.remove('on');setStat('B','Bing Selesai!','ok');document.getElementById('finBanner').classList.add('on');log('SEMUA MISI SELESAI!','gold');resetCtrl();document.getElementById('btnMulai').textContent='MULAI MISI BARU';}
+  // Jalankan visual human-like scroll (seperti humanLikeScroll di halaman asli)
+  humanLikeScrollAnim('innerM');
 
-function resetCtrl(){setAll(false);const bm=document.getElementById('btnMulai');bm.classList.add('on');bm.disabled=false;bm.textContent='MULAI MISI';document.getElementById('jrRow').classList.remove('on');document.getElementById('btnJeda').classList.remove('paused');document.getElementById('btnJeda').textContent='JEDA';}
+  openUrl(url);
 
-function doLogout(){clearTimeout(tMain);clearTimeout(tSafe);stopScroll();closeWin();sessionStorage.removeItem('tbUser');window.location.href='login.html';}
+  // Safety timer jika window diclose manual atau gagal
+  clearTimeout(tMain);
+  tMain = setTimeout(nextMsn, vTime);
+  tSafe = setTimeout(nextMsn, vTime + 4000);
+}
+
+function nextMsn() {
+  clearTimeout(tMain); clearTimeout(tSafe);
+  clearScrollAnim(); resetPreview('innerM');
+  closeWin();
+  cM++;
+  document.getElementById('doneM').textContent = cM;
+  const tgt = parseInt(document.getElementById('tgtM').value);
+  document.getElementById('fillM').style.width = (cM / tgt * 100) + '%';
+  log('MSN selesai baca ' + cM + '/' + tgt, 'g');
+
+  if (cM < tgt) {
+    setStat('M', '\u23F3 Jeda sebentar...', '');
+    tMain = setTimeout(runMsn, rand(2000, 3500));
+  } else {
+    msnR = false;
+    document.getElementById('cardM').classList.remove('running');
+    document.getElementById('cardM').classList.add('done');
+    document.getElementById('prevM').classList.remove('on');
+    setBadges('M', false);
+    setStat('M', '\uD83C\uDFC6 MSN Selesai!', 'ok');
+    log('MSN MISSION SELESAI', 'gold');
+
+    if (enB) {
+      const cd = rand(4, 7) * 1000;
+      setStat('B', '\u23F3 Cooldown ' + (cd / 1000) + ' dtk...', '');
+      setTimeout(() => {
+        bingR = true;
+        document.getElementById('cardB').classList.add('running');
+        document.getElementById('prevB').classList.add('on');
+        setBadges('B', true);
+        runBing();
+      }, cd);
+    } else {
+      finishAll();
+    }
+  }
+}
+
+/* ══════════════════════════════════════════════════
+   BING ENGINE — dengan randomBingClick visual + CVID spoof
+══════════════════════════════════════════════════ */
+function runBing() {
+  if (isPaused || !bingR) return;
+  // Isi ulang dari MASTER jika habis (tanpa menulis ulang list)
+  if (wordsB.length === 0) wordsB = superShuffle([...MASTER_WORDS]);
+
+  const vMin = parseInt(document.getElementById('minB').value) || 8;
+  const vMax = parseInt(document.getElementById('maxB').value) || 15;
+  const vTime = rand(vMin, vMax) * 1000;
+
+  const q = wordsB.pop();
+  // CVID baru setiap pencarian (anti-deteksi)
+  const url = 'https://www.bing.com/search?q=' + encodeURIComponent(q) + '&qs=n&form=QBRE&cvid=' + generateCVID();
+
+  setStat('B', '\uD83D\uDD0E Mencari: ' + q, 'live');
+  log('Bing \u2192 "' + q + '"', 'c');
+
+  // Jalankan visual random click (seperti randomBingClick di halaman asli)
+  // Tunggu 1-3 detik setelah buka tab baru, lalu simulate klik hasil
+  setTimeout(() => {
+    randomBingClickAnim('innerB');
+  }, rand(1000, 3000));
+
+  openUrl(url);
+
+  // Safety timer jika window diclose manual atau gagal
+  clearTimeout(tMain);
+  tMain = setTimeout(nextBing, vTime);
+  tSafe = setTimeout(nextBing, vTime + 5000);
+}
+
+function nextBing() {
+  clearTimeout(tMain); clearTimeout(tSafe);
+  clearScrollAnim(); resetPreview('innerB');
+  closeWin();
+  cB++;
+  document.getElementById('doneB').textContent = cB;
+  const tgt = parseInt(document.getElementById('tgtB').value);
+  document.getElementById('fillB').style.width = (cB / tgt * 100) + '%';
+  log('Bing selesai ' + cB + '/' + tgt, 'g');
+
+  if (cB < tgt) {
+    setStat('B', '\u23F3 Jeda sebentar...', '');
+    tMain = setTimeout(runBing, rand(1500, 3000));
+  } else {
+    finishAll();
+  }
+}
+
+/* ══════════════════════════════════════════════════
+   PAUSE / RESUME
+══════════════════════════════════════════════════ */
+function togglePause() {
+  isPaused = !isPaused;
+  const btn = document.getElementById('btnJeda');
+  if (isPaused) {
+    clearTimeout(tMain); clearTimeout(tSafe);
+    clearScrollAnim();
+    btn.textContent = 'LANJUT'; btn.classList.add('paused');
+    if (msnR) setStat('M', '\u23F8 Dijeda...', '');
+    if (bingR) setStat('B', '\u23F8 Dijeda...', '');
+    log('Dijeda.', 'gold');
+  } else {
+    btn.textContent = 'JEDA'; btn.classList.remove('paused');
+    log('Dilanjutkan.', 'gold');
+    if (msnR) runMsn();
+    else if (bingR) runBing();
+  }
+}
+
+/* ══════════════════════════════════════════════════
+   RESET
+══════════════════════════════════════════════════ */
+function stopAll() {
+  if (!confirm('Reset dan hentikan misi?')) return;
+  clearTimeout(tMain); clearTimeout(tSafe);
+  clearScrollAnim(); closeWin();
+  msnR = false; bingR = false; isPaused = false; isRunning = false;
+  setStat('M', 'Standby...', ''); setStat('B', 'Menunggu MSN...', '');
+  ['M', 'B'].forEach(t => {
+    document.getElementById('card' + t).classList.remove('running', 'done');
+    document.getElementById('prev' + t).classList.remove('on');
+    document.getElementById('done' + t).textContent = 0;
+    document.getElementById('fill' + t).style.width = '0%';
+    resetPreview('inner' + t);
+    setBadges(t, false);
+  });
+  document.getElementById('finBanner').classList.remove('on');
+  log('Direset.', 'gold');
+  resetCtrl();
+}
+
+/* ══════════════════════════════════════════════════
+   FINISH
+══════════════════════════════════════════════════ */
+function finishAll() {
+  closeWin(); clearScrollAnim();
+  msnR = false; bingR = false; isRunning = false;
+  document.getElementById('cardB').classList.remove('running');
+  document.getElementById('cardB').classList.add('done');
+  document.getElementById('prevB').classList.remove('on');
+  setBadges('B', false);
+  setStat('B', '\uD83C\uDFC6 Bing Selesai!', 'ok');
+  document.getElementById('finBanner').classList.add('on');
+  log('SEMUA MISI SELESAI!', 'gold');
+  resetCtrl();
+  document.getElementById('btnMulai').textContent = 'MULAI MISI BARU';
+}
+
+function resetCtrl() {
+  setAll(false);
+  const bm = document.getElementById('btnMulai');
+  bm.classList.add('on'); bm.disabled = false; bm.textContent = 'MULAI MISI';
+  document.getElementById('jrRow').classList.remove('on');
+  document.getElementById('btnJeda').classList.remove('paused');
+  document.getElementById('btnJeda').textContent = 'JEDA';
+}
+
+/* ══════════════════════════════════════════════════
+   LOGOUT
+══════════════════════════════════════════════════ */
+function doLogout() {
+  clearTimeout(tMain); clearTimeout(tSafe);
+  clearScrollAnim(); closeWin();
+  sessionStorage.removeItem('tbUser');
+  window.location.href = 'login.html';
+}
 </script>
 </body>
 </html>

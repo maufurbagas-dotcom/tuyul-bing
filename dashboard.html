@@ -268,70 +268,7 @@ const me=sessionStorage.getItem('tbUser');
 if(!me) window.location.href='login.html';
 else document.getElementById('wbar').textContent='Selamat datang, '+me+' \uD83D\uDC7E';
 
-const MSN_LINKS = [
-  // Berita Dunia & Politik
-  "https://www.msn.com/id-id/berita/dunia/serangan-as-ke-iran-apa-yang-terjadi-selanjutnya/ar-AA1XgkXi",
-  "https://www.msn.com/id-id/berita/dunia/iran-ancam-balas-setelah-serangan-udara-as-israel/ar-AA1Xgsr1",
-  "https://www.msn.com/id-id/berita/dunia/selat-hormuz-ditutup-dampak-bagi-ekonomi-global/ar-AA1XgzNO",
-  "https://www.msn.com/id-id/berita/dunia/ali-khamenei-wafat-siapa-pemimpin-tertinggi-iran-berikutnya/ar-AA1XghLS",
-  "https://www.msn.com/id-id/berita/dunia/jerman-belgia-tolak-bergabung-dalam-serangan-ke-iran/ar-AA1XfIDK",
-  "https://www.msn.com/id-id/berita/nasional/prabowo-kirim-surat-duka-untuk-iran/ar-AA1XfINB",
-  "https://www.msn.com/id-id/berita/nasional/kpk-tangkap-bupati-pekalongan-dalam-operasi-tangkap-tangan/ar-AA1Xg5ws",
-  "https://www.msn.com/id-id/berita/nasional/danantara-evaluasi-bumn-fokus-perbaikan-kinerja/ar-AA1XgkXi",
-  "https://www.msn.com/id-id/berita/nasional/pimpinan-ormas-islam-penuhi-undangan-prabowo-di-istana/ar-AA1Xgsr2",
-  "https://www.msn.com/id-id/berita/nasional/gunung-lewotobi-laki-laki-erupsi-warga-diminta-menjauh/ar-AA1XhP1a",
-
-  // Ekonomi & Keuangan
-  "https://www.msn.com/id-id/keuangan/berita/ihsg-diprediksi-melemah-cek-rekomendasi-saham-hari-ini/ar-AA1Xh2mQ",
-  "https://www.msn.com/id-id/keuangan/berita/harga-emas-antam-hari-ini-5-maret-2026-bangkit-usai-anjlok/ar-AA1Xh3nR",
-  "https://www.msn.com/id-id/keuangan/berita/bi-siapkan-5-strategi-hadapi-tantangan-ekonomi-2026/ar-AA1Xh4oS",
-  "https://www.msn.com/id-id/keuangan/berita/harga-minyak-dunia-melonjak-akibat-konflik-iran-as/ar-AA1Xh5pT",
-  "https://www.msn.com/id-id/keuangan/berita/thr-asn-dan-pensiunan-2026-cair-100-persen-ini-jadwalnya/ar-AA1Xh6qU",
-  "https://www.msn.com/id-id/keuangan/berita/cara-investasi-reksa-dana-untuk-pemula-2026/ar-AA1Xh7rV",
-  "https://www.msn.com/id-id/keuangan/berita/dolar-as-menguat-rupiah-tertekan-akibat-ketegangan-timur-tengah/ar-AA1Xh8sW",
-  "https://www.msn.com/id-id/keuangan/berita/promo-shopee-puncak-ramadhan-2026-diskon-hingga-90-persen/ar-AA1Xh9tX",
-
-  // Kesehatan
-  "https://www.msn.com/id-id/kesehatan/nutrisi/makanan-ultra-proses-bahaya-mirip-rokok-bagi-tubuh/ar-AA1Vz4Fg",
-  "https://www.msn.com/id-id/kesehatan/nutrisi/manfaat-coklat-hitam-untuk-jantung-usus-dan-otak/ar-AA1XfJBW",
-  "https://www.msn.com/id-id/kesehatan/lainnya/latihan-otak-sederhana-kurangi-risiko-demensia-25-persen/ar-AA1W1IlD",
-  "https://www.msn.com/id-id/kesehatan/lainnya/teknologi-radioterapi-kanker-serviks-harapan-baru-perempuan/ar-AA1Xfn4y",
-  "https://www.msn.com/id-id/kesehatan/lainnya/7-tanda-kurang-tidur-dan-cara-mengatasinya/ar-AA1Xh9tX",
-  "https://www.msn.com/id-id/kesehatan/lainnya/manfaat-jalan-kaki-10000-langkah-per-hari-bagi-tubuh/ar-AA1XhAuY",
-  "https://www.msn.com/id-id/kesehatan/nutrisi/benarkah-minyak-biji-berbahaya-bagi-kesehatan/ar-AA1XhBvZ",
-
-  // Otomotif
-  "https://www.msn.com/id-id/otomotif/berita/mobil-listrik-terlaris-di-indonesia-februari-2026/ar-AA1W3uce",
-  "https://www.msn.com/id-id/otomotif/berita/lampu-led-mobil-modern-bikin-silau-pengemudi-lain/ar-AA1PkwUL",
-  "https://www.msn.com/id-id/otomotif/berita/tips-persiapan-mobil-sebelum-mudik-lebaran-2026/ar-AA1XhCwA",
-  "https://www.msn.com/id-id/otomotif/berita/motor-listrik-subsidi-pemerintah-cara-beli-dan-syaratnya/ar-AA1WM9Zx",
-  "https://www.msn.com/id-id/otomotif/berita/harga-bensin-pertamax-terbaru-maret-2026/ar-AA1T6rkG",
-
-  // Olahraga
-  "https://www.msn.com/id-id/olahraga/sepak-bola/timnas-indonesia-vs-australia-kualifikasi-piala-dunia-2026/ar-AA1Xg1kU",
-  "https://www.msn.com/id-id/olahraga/sepak-bola/liga-1-persib-bandung-klasemen-terbaru-2026/ar-AA1X7xQr",
-  "https://www.msn.com/id-id/olahraga/sepak-bola/barcelona-cedera-jelang-laga-penting-liga-champions/ar-AA1XhDxB",
-  "https://www.msn.com/id-id/olahraga/bulu-tangkis/all-england-2026-tiwi-fadia-lolos-ke-16-besar/ar-AA1XhEyC",
-  "https://www.msn.com/id-id/olahraga/futsal/timnas-futsal-indonesia-raih-perak-piala-asia-2026/ar-AA1XhFzD",
-
-  // Hiburan & Gaya Hidup
-  "https://www.msn.com/id-id/hiburan/film/12-film-indonesia-terbaru-maret-2026-wajib-tonton/ar-AA1X2iJn",
-  "https://www.msn.com/id-id/hiburan/film/danur-the-last-chapter-penutup-kisah-horor-risa/ar-AA1XhGAE",
-  "https://www.msn.com/id-id/hiburan/musik/bts-comeback-2026-jadwal-rilis-album-terbaru/ar-AA1X9ddK",
-  "https://www.msn.com/id-id/gayahidup/belanja/rekomendasi-tumbler-terbaik-2026-gaya-hidup-sehat/ar-AA1VYGWQ",
-  "https://www.msn.com/id-id/gayahidup/keluarga/tren-nama-bayi-2026-dari-karakter-anime-hingga-fantasi/ar-AA1XhICG",
-
-  // Cuaca & Travel
-  "https://www.msn.com/id-id/cuaca/utama/bmkg-peringatan-cuaca-ekstrem-maret-2026/ar-AA1Xe9YG",
-  "https://www.msn.com/id-id/perjalanan/berita/destinasi-wisata-religi-populer-ramadhan-2026/ar-AA1WUJCi",
-  "https://www.msn.com/id-id/perjalanan/berita/tiket-kereta-mudik-lebaran-2026-cara-pesan-dan-harga/ar-AA1XhJDH",
-
-  // Makanan & Minuman
-  "https://www.msn.com/id-id/makanandanminum/resep/resep-opor-ayam-kuning-lebaran-anti-gagal/ar-AA1VXajc",
-  "https://www.msn.com/id-id/makanandanminum/lainnya/30-tempat-makan-sahur-terbaik-di-jakarta/ar-BB1qPDT8",
-  "https://www.msn.com/id-id/makanandanminum/resep/resep-ketupat-janur-untuk-lebaran/ar-AA1PRoBJ",
-  "https://www.msn.com/id-id/makanandanminum/lainnya/trik-bumbu-pepes-meresap-maksimal-daging-makin-nikmat/ar-AA1XhKEI"
-];
+const MSN_LINKS=["https://www.msn.com/en-gb/health/nutrition/ultra-processed-foods-have-more-in-common-with-cigarettes-than-fruit/ar-AA1Vz4Fg","https://www.msn.com/en-gb/entertainment/tv/jeremy-clarkson-reveals-filming-for-clarkson-s-farm-has-stopped/ar-AA1X2iJn","https://www.msn.com/en-gb/cars/news/councils-ban-20-too-big-vehicles-from-car-parks-in-2026-full-list/ar-AA1W3uce","https://www.msn.com/en-gb/money/other/households-urged-to-never-plug-5-everyday-appliances-into-extension-leads-or-risk-fire/ar-AA1X1ezu","https://www.msn.com/en-gb/money/other/trump-s-iran-strikes-threaten-to-send-petrol-prices-soaring-and-rip-through-global-trade/ar-AA1Xgsr1","https://www.msn.com/en-gb/foodanddrink/other/i-asked-chefs-what-the-best-supermarket-butter-is-they-both-said-the-same-thing/ar-AA1VXajc","https://www.msn.com/en-gb/money/other/the-0-01pc-rule-that-could-transform-your-spending/ar-AA1Np9WX","https://www.msn.com/en-gb/sport/motorsports/formula-one-to-revise-controversial-rule-at-centre-of-mercedes-engine-row/ar-AA1Xg1kU","https://www.msn.com/en-gb/news/world/blaze-breaks-out-at-luxury-dubai-hotel-during-iran-air-attack/ar-AA1XgzNO","https://www.msn.com/en-gb/health/nutrition/how-dark-chocolate-can-protect-your-heart-gut-and-brain-and-the-best-bars-to-buy/ar-AA1XfJBW","https://www.msn.com/en-gb/news/world/lost-continent-unlike-anything-found-today-discovered-off-the-coast-of-australia/ar-AA1X2znl","https://www.msn.com/en-gb/news/uknews/uk-should-resist-being-dragged-into-war-after-iran-strikes-says-labour-mp/ar-AA1XfINB","https://www.msn.com/en-gb/health/other/this-is-the-struggling-capital-of-old-age-britain-soon-the-whole-country-will-be-the-same/ar-AA1Xfn4y","https://www.msn.com/en-gb/weather/topstories/met-office-names-uk-areas-facing-snow-on-sunday/ar-AA1Xe9YG","https://www.msn.com/en-gb/foodanddrink/other/the-30-best-breakfasts-in-london/ar-BB1qPDT8","https://www.msn.com/en-gb/news/uknews/farage-and-badenoch-back-trump-after-labour-mps-say-iran-strikes-unlawful/ar-AA1Xg5ws","https://www.msn.com/en-gb/lifestyle/family/what-viral-monkey-punch-teaches-us-about-gentle-parenting/ar-AA1X9ddK","https://www.msn.com/en-gb/health/other/the-science-behind-rfk-jr-s-new-diet-advice-and-it-s-not-all-wild/ar-AA1TWkcF","https://www.msn.com/en-gb/sport/football/man-city-xi-vs-leeds-starting-lineup-and-confirmed-team-news/ar-AA1X7xQr","https://www.msn.com/en-gb/foodanddrink/recipes/individual-toad-in-the-hole/ar-AA1PRoBJ","https://www.msn.com/en-gb/cars/news/20-cars-that-aren-t-as-good-as-you-think/ss-AA1PQJPT","https://www.msn.com/en-gb/lifestyle/shopping/gamercard-review-get-your-retro-fix-with-this-no-frills-device/ar-AA1VYGWQ","https://www.msn.com/en-gb/news/world/us-attack-on-iran-is-moment-of-extreme-peril-for-world-with-the-uk-impacted/ar-AA1XgkXi","https://www.msn.com/en-gb/travel/news/easter-s-cheapest-holiday-destination-is-4-hours-from-uk-with-25c-and-2-pints/ar-AA1WUJCi","https://www.msn.com/en-gb/cars/news/the-brilliant-car-designs-of-giorgetto-giugiaro/ss-AA1T6rkG","https://www.msn.com/en-gb/news/world/can-the-us-force-regime-change-upon-iran-and-depose-the-ayatollah/ar-AA1XfIDK","https://www.msn.com/en-gb/money/other/state-pension-age-rise-from-april-for-people-born-in-these-years/ar-AA1Xgalj","https://www.msn.com/en-gb/news/world/big-blasts-heard-over-dubai-as-people-run-for-cover-from-iranian-missiles/ar-AA1XghLS","https://www.msn.com/en-gb/health/other/study-claims-this-simple-brain-exercise-can-cut-dementia-risk-by-25/ar-AA1W1IlD","https://www.msn.com/en-gb/news/world/gibraltar-military-base-subject-to-eu-weapons-checks/ar-AA1Xcc7u","https://www.msn.com/en-gb/cars/news/the-best-ever-shooting-brakes/ss-AA1WM9Zx","https://www.msn.com/en-gb/cars/news/modern-car-headlights-are-blinding-britain-s-drivers/ar-AA1PkwUL"];
 
 const BING_WORDS = [
   // Konflik Timur Tengah - Trending Maret 2026

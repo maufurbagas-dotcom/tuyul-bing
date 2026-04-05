@@ -1,171 +1,805 @@
 <!DOCTYPE html>
-<html lang="id">
+<html dir="ltr" lang="en-US" data-role-name="RewardsPortal" class="ltr rewards-user-suspended-error rewards js">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LOGIN | TUYUL BING</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap');
-  * { margin:0; padding:0; box-sizing:border-box; }
+    <title>Rewards Error</title>
 
-  body {
-    background: #0d1117;
-    font-family: 'Rajdhani', sans-serif;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 24px;
-    background-image: radial-gradient(ellipse at 50% 0%, #0f2235 0%, #0d1117 60%);
-  }
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+        <meta name="description" content="Reward Page description!" />
+        <meta name="og:description" content="Reward Page description!" />
+        <meta name="og:title" content="Rewards Error" />
+        <meta name="pageid" content="rewards-user-suspended-error" />
 
-  .box {
-    background: #161d27;
-    border: 1px solid #1e2a38;
-    border-radius: 18px;
-    padding: 44px 32px 36px;
-    width: 100%;
-    max-width: 400px;
-    box-shadow: 0 0 80px rgba(0,200,232,0.07);
-  }
 
-  .logo {
-    font-family: 'Orbitron', monospace;
-    font-size: 1.5rem;
-    font-weight: 900;
-    color: #d4a017;
-    letter-spacing: 4px;
-    text-align: center;
-    margin-bottom: 4px;
-  }
+    <link rel="canonical" href="https://rewards.bing.com/" />
+    <link href="/rewards.png" rel="shortcut icon" type="image/png" sizes="any" />
 
-  .sub {
-    text-align: center;
-    font-size: 0.66rem;
-    letter-spacing: 3px;
-    color: #556070;
-    margin-bottom: 32px;
-    text-transform: uppercase;
-    font-weight: 600;
-  }
+    
 
-  .section-title {
-    font-family: 'Orbitron', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 3px;
-    color: #00c8e8;
-    text-align: center;
-    margin-bottom: 24px;
-  }
+        <link rel="stylesheet" href="https://msrewardspme.azureedge.net/rewardsuxassets/amcassets/css/webcore-ltr-e0a242958d-v2.css" nonce="xWfg6JL9F1JwXv5L/vmcsdskkUvYrn7AOj0O0Y8CtV8=" />
 
-  .field { margin-bottom: 18px; }
+    <link rel="stylesheet" href="https://msrewardspme.azureedge.net/rewardsuxassets/amcassets/css/site-157c5de614-v2.css" nonce="xWfg6JL9F1JwXv5L/vmcsdskkUvYrn7AOj0O0Y8CtV8=" />
+    <link rel="stylesheet" href="https://msrewardspme.azureedge.net/rewardsuxassets/amcassets/css/rewards-shared-8ed070e85d-v2.css" nonce="xWfg6JL9F1JwXv5L/vmcsdskkUvYrn7AOj0O0Y8CtV8=" />
 
-  label {
-    display: block;
-    font-size: 0.66rem;
-    letter-spacing: 3px;
-    color: #556070;
-    font-weight: 700;
-    margin-bottom: 8px;
-    text-transform: uppercase;
-  }
+    
 
-  input {
-    background: #0d1117;
-    border: 1px solid #1e2a38;
-    border-radius: 8px;
-    color: #c8d6e5;
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 12px 14px;
-    width: 100%;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  input:focus { border-color: #00c8e8; }
 
-  .err {
-    color: #e84040;
-    font-size: 0.78rem;
-    font-weight: 600;
-    min-height: 22px;
-    margin-bottom: 14px;
-    letter-spacing: 1px;
-    display: block;
-  }
 
-  .btn {
-    background: #00c8e8;
-    color: #0d1117;
-    font-family: 'Orbitron', monospace;
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 3px;
-    padding: 14px;
-    border: none;
-    border-radius: 8px;
-    width: 100%;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: opacity 0.2s, transform 0.1s;
-  }
-  .btn:hover { opacity: 0.85; }
-  .btn:active { transform: scale(0.98); }
+    <script crossorigin="anonymous" type="text/javascript" src="https://msrewardspme.azureedge.net/rewardsuxassets/amcassets/js/jquery-8101d596b2-v2.js" nonce="xWfg6JL9F1JwXv5L/vmcsdskkUvYrn7AOj0O0Y8CtV8="></script>
 
-  .hint {
-    text-align: center;
-    margin-top: 18px;
-    font-size: 0.68rem;
-    color: #2a3a4a;
-    letter-spacing: 1px;
-  }
-</style>
+    <script nonce="xWfg6JL9F1JwXv5L/vmcsdskkUvYrn7AOj0O0Y8CtV8=">
+        var jqueryInstance = jQuery || $;
+        jqueryInstance && jqueryInstance.ajaxPrefilter(function (s) {
+        if (s.crossDomain) {
+        s.contents.script = false;
+        }
+        });
+    </script>
+
+    
+<script type="text/javascript" nonce="xWfg6JL9F1JwXv5L/vmcsdskkUvYrn7AOj0O0Y8CtV8=">
+
+    //TBD: Add Nightwatch for JS Error
+    window.onerror = function javaScriptErrorWatchdog(errorMsg, url, lineNumber) {
+        var errorMeta = document.createElement("meta");
+        errorMeta.name = "JSError";
+        errorMeta.content = "" + url + "; " + lineNumber + "; " + errorMsg;
+        document.getElementsByTagName("head")[0].appendChild(errorMeta);
+
+        return false;
+    };
+
+
+</script>
+
+
+    <script type="text/javascript" nonce="xWfg6JL9F1JwXv5L/vmcsdskkUvYrn7AOj0O0Y8CtV8=">
+        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+        var msViewportStyle = document.createElement("style");
+        var mq = "@-ms-viewport{width:auto!important}";
+        msViewportStyle.appendChild(document.createTextNode(mq));
+        document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+        }
+    </script>
+
+    <script id="site-layout-config" type="text/javascript" nonce="xWfg6JL9F1JwXv5L/vmcsdskkUvYrn7AOj0O0Y8CtV8=">
+        var MeePortal = MeePortal || {};
+        MeePortal.Utilities = MeePortal.Utilities || {};
+
+        MeePortal.g_userFeatures =[];
+        MeePortal.g_userFlights = MeePortal.g_userFeatures.map(feature => feature.split(":")[0]);
+
+        //MeePortal.Utilities.EmailRegex = //;
+    </script>
+
+
+    
+    
+
+
+        <base href="/" />
 </head>
-<body>
-<div class="box">
-  <div class="logo">TUYUL BING</div>
-  <div class="sub">BAGAS JADI PRABU</div>
-  <div class="section-title">LOGIN</div>
+<body ng-csp>
+    <div id="page-wrapper">
+        <div id="site-header">
+            
 
-  <div class="field">
-    <label>USERNAME</label>
-    <input type="text" id="u" placeholder="masukkan username" autocomplete="off" autofocus>
-  </div>
-  <div class="field">
-    <label>PASSWORD</label>
-    <input type="password" id="p" placeholder="masukkan password">
-  </div>
+<header>
+    <div id="rewards-header" class="" aria-label="Rewards Header">
+        <div class="l_header_container ">
+            <div class="l_header_left">
+                <a href="#" class="skip_main_content_btn" id="skip-to-main-content">Skip to main content</a>
 
-  <span class="err" id="err"></span>
-  <button class="btn" onclick="login()">LOGIN</button>
-  <div class="hint">© TUYUL BING — BAGAS JADI PRABU</div>
+                <a href="/" id="reward_header_rewards_logo">
+                    <img class="bing_logo" src="//rewards.bing.com/rewardscdn/images/rewards/membercenter/missions/Ms_Logo_48px.png" alt="Rewards" />
+                </a>
+                <a class="l_header_title" href="/" aria-label="Rewards" id="reward_header_rewards">
+                    Microsoft &nbsp; | &nbsp; Rewards
+                </a>
+
+                <nav role="navigation">
+                    <ul class="header-nav-list">
+                                    <li>
+                                        <a id="give_header_link" class="redirect_link other_sites" href="https://rewards.bing.com/redeem/donate?publ=&amp;crea=&amp;pn=" aria-label="Donation catalog" id="reward_header_donate">
+                                            Donate
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a id="chat_header_link" class="redirect_link other_sites" href="https://www.bing.com/chat?form=ML2L0N" aria-label="Link to Microsoft Copilot" id="reward_header_chat">
+                                            Copilot
+                                        </a>
+                                    </li>
+                    </ul>
+                </nav>
+
+                    <div class="redirect_link more_options">
+                        <button id="link_dropdown" type="button" title="More" class="more_btn" data-is-focusable="true">
+                            <span>
+                                ···
+                            </span>
+                        </button>
+                        <div class="more_btn_popup" id="morelinks_popup" aria-labelledby="link_dropdown">
+                            <div class="ms-Callout-beak">
+                            </div>
+                            <div class="ms-Callout-beakCurtain">
+                                <div class="ms-Callout-main">
+                                    <ul class="ms-ContextualMenu-list">
+                                                <li role="presentation" class="ms-ContextualMenu-item">
+                                                    <div>
+                                                        <a class="redirect_link other_sites more_option" href="https://rewards.bing.com/redeem/donate?publ=&amp;crea=&amp;pn=" aria-label="Donation catalog">
+                                                            Donate
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <li role="presentation" class="ms-ContextualMenu-item">
+                                                    <div>
+                                                        <a class="redirect_link other_sites more_option" href="https://www.bing.com/chat?form=ML2L0N" aria-label="Link to Microsoft Copilot">
+                                                            Copilot
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+            <div class="l_header_right">
+                        <a class="redirect_link amc_link" href="https://account.microsoft.com" aria-label="Microsoft account" id="reward_header_amc">
+                            Microsoft account
+                        </a>
+                    <span class="redirect_link additional_info" id="divider"> | </span>
+                    <a id="redirect_info_link" tabindex="0" class="redirect_link additional_info" data-clarity-mask="True" title="tuniroh iroh" role="button" aria-expanded="false" aria-controls="mectrl_popup" aria-haspopup="menu">
+                        tuniroh iroh
+                    </a>
+                    <div id="profile_img_sec" class="image_sec" title="tuniroh iroh">
+                        <img id="img_sec" class="profile_img" src="https://storage.live.com/users/0x0000000000000000daf1b1c3d77e1114/myprofile/expressionprofile/profilephoto:Win8Static,UserTileMedium,UserTileStatic/MeControlXXLUserTile?ck=1&amp;ex=24" role="button" aria-expanded="false" aria-controls="mectrl_popup" aria-haspopup="menu" alt="Default profile image" aria-label="Default profile image" />
+                        <div class="displayPictureLinkedAccount">
+                            <img id="img_sec_default" 
+                                 tabindex="0" 
+                                 class="profile_img" 
+                                 src="//rewards.bing.com/rewardscdn/images/rewards/membercenter/missions/profilePicBackground.svg" 
+                                 alt="Default profile image"
+                                 role="button"
+                                 aria-haspopup="true"
+                                 aria-expanded="false"
+                                 aria-controls="mectrl_popup" />
+                        </div>
+                    </div>
+                    <div id="mectrl_popup" class="mectrl_body" aria-labelledby="img_sec_default">
+                        <div class="mectrl_currentAccount">
+                            <div class="mectrl_company">
+                                    <div class="glyph_msft">
+                                        <div class="glyph_text">Microsoft</div>
+                                    </div>
+                                <div id="mectrl_body_signOut" class="mectrl_signout">
+<a href="/Signout">Sign Out</a>                                </div>
+                            </div>
+                            <div class="mectrl_accountInfo">
+                                <div>
+                                    <a id="mectrl_currentAccount_picture"
+                                       tabindex="0"
+                                       class="mectrl_resetStyle"
+                                       aria-label="My&#xA0;Microsoft&#xA0;account"
+                                       target="_blank">
+                                        <img id="currentAccount_picture"
+                                             class="mectrl_profilepic mectrl_glyph"
+                                             src="https://storage.live.com/users/0x0000000000000000daf1b1c3d77e1114/myprofile/expressionprofile/profilephoto:Win8Static,UserTileMedium,UserTileStatic/MeControlXXLUserTile?ck=1&amp;ex=24"
+                                             alt="Default profile image" />
+                                        <img id="currentAccount_picture_default"
+                                             class="mectrl_profilepic mectrl_glyph"
+                                             src="//rewards.bing.com/rewardscdn/images/rewards/membercenter/missions/profilePicBackground.svg"
+                                             alt="Default profile image" />
+
+                                    </a>
+                                </div>
+                                <div class="mectrl_accountDetails">
+                                    <div id="mectrl_currentAccount_primary"
+                                         class="mectrl_name mectrl_truncate"
+                                         data-clarity-mask="True">
+                                        tuniroh iroh
+                                    </div>
+                                    <div id="mectrl_currentAccount_secondary"
+                                         class="mectrl_truncate">
+                                        tunirohtun@gmail.com
+                                    </div>
+                                    <div>
+                                            <a id="mectrl_viewAccount"
+                                               tabindex="0"
+                                               class="mectrl_resetStyle mectrl_link mectrl_truncate"
+                                               aria-describedby="mectrl_viewAccount_desc"
+                                               aria-label="My&#xA0;Microsoft&#xA0;account"
+                                               target="_blank">My&#xA0;Microsoft&#xA0;account</a>
+                                    </div>
+                                    <div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script type="text/javascript" nonce="xWfg6JL9F1JwXv5L/vmcsdskkUvYrn7AOj0O0Y8CtV8=">
+    function normalImgHandling(normalId, defaultId) {
+        document.getElementById(defaultId).style["display"] = "none";
+        document.getElementById(normalId).style["display"] = "inline-block";
+    }
+
+    function skipToMainContent(e) {
+        e.preventDefault();
+        const target = document.getElementById("main-content-landing");
+        if (target) {
+            target.scrollIntoView({ block: 'start' });
+            target.focus();
+        }
+    }
+
+    document.getElementById("skip-to-main-content")?.addEventListener('click', function (e) {
+        skipToMainContent(e);
+    });
+
+    document.getElementById("skip-to-main-content")?.addEventListener('keydown', function (e) {
+        if (e.key === "Enter") {
+            skipToMainContent(e);
+        }
+    });
+
+    document.getElementById("give_header_link")?.addEventListener('click', function () {
+        return MeePortal.Rewards.Header.redirectTo('');
+    });
+    document.getElementById("chat_header_link")?.addEventListener('click', function () {
+        return MeePortal.Rewards.Header.redirectTo('');
+    });
+    document.getElementById("rebates_header_link")?.addEventListener('click', function () {
+        return MeePortal.Rewards.Header.redirectTo('');
+    });
+
+    document.getElementById("link_dropdown")?.addEventListener('click', function () {
+        MeePortal.Rewards.Header.switchDropDown('#morelinks_popup');
+    });
+    document.getElementById("img_sec")?.addEventListener('click', function () {
+        MeePortal.Rewards.Header.switchDropDown('#mectrl_popup');
+    });
+
+    document.getElementById("img_sec_default")?.addEventListener('click', function () {
+        MeePortal.Rewards.Header.switchDropDown('#mectrl_popup');
+    });
+    document.getElementById("img_sec_default")?.addEventListener('keydown', function (e) {
+        if (e.key === "Enter") {
+            MeePortal.Rewards.Header.switchDropDown('#mectrl_popup');
+        }
+    });
+    document.getElementById("redirect_info_link")?.addEventListener('click', function () {
+        MeePortal.Rewards.Header.switchDropDown('#mectrl_popup');
+    });
+    document.getElementById("redirect_info_link")?.addEventListener('keydown', function (e) {
+        if (e.key === "Enter") {
+            MeePortal.Rewards.Header.switchDropDown('#mectrl_popup');
+        }
+    });
+
+    document.getElementById("mectrl_viewAccount")?.addEventListener('click', function () {
+        MeePortal.Rewards.Header.openManageAccountLink('https://account.microsoft.com/?username=', 'tunirohtun@gmail.com');
+    });
+    document.getElementById("mectrl_currentAccount_picture")?.addEventListener('click', function () {
+        MeePortal.Rewards.Header.openManageAccountLink('https://account.microsoft.com/?username=', 'tunirohtun@gmail.com');
+    });
+
+    document.getElementById("mectrl_viewAccount")?.addEventListener('keydown', function (e) {
+        if (e.key === "Enter") {
+            MeePortal.Rewards.Header.openManageAccountLink('https://account.microsoft.com/?username=', 'tunirohtun@gmail.com');
+        }
+    });
+    document.getElementById("mectrl_currentAccount_picture")?.addEventListener('keydown', function (e) {
+        if (e.key === "Enter") {
+            MeePortal.Rewards.Header.openManageAccountLink('https://account.microsoft.com/?username=', 'tunirohtun@gmail.com');
+        }
+    });
+
+    document.getElementById("aad_submit_link")?.addEventListener("click", function () {
+        document.getElementById("signoutPostLink")?.submit();
+    });
+
+    document.getElementById("img_sec")?.addEventListener('load', function () {
+        normalImgHandling('img_sec', 'img_sec_default');
+    });
+
+    document.getElementById("currentAccount_picture")?.addEventListener('load', function () {
+        normalImgHandling('currentAccount_picture', 'currentAccount_picture_default');
+    });
+</script>
+            
+    
+
+        </div>
+        <div tabindex="-1" id="main-content-landing" aria-label="pagearia" role="main" class="no-outline">
+            <main id="rewards-user-suspended-error" data-grid="container" class="content-container container-fluid context-amc rewards-container">
+                
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="fraudErrorBody">
+        <div id="suspendedAccountHeader">
+            <div id="warningSuspendedImg">
+                <img src="https://rewards.bing.com/rewardscdn/images/rewards/membercenter/missions/suspended/account/StopIcon.png" alt="" />
+            </div>
+            Your Microsoft Rewards account has been suspended.
+        </div>
+        <div id="fraudSummary">
+            Our research indicates that you or your Microsoft Rewards account has engaged in one or more violations of the <a href='https://go.microsoft.com/fwlink/?LinkID=530144' target='_blank'>Microsoft Services Agreement</a>, which may include, but is not limited to:
+        </div>
+        <div id="fraudBulletPoints">
+            <ul>
+                <li>
+                    Maintaining multiple user accounts per household
+                </li>
+                <li>
+                    Opening more than one user account per individual
+                </li>
+                <li>
+                    Residing outside of the <a href='https://support.microsoft.com/topic/9795ec47-c0f4-a33e-aede-738903359d63' target='_blank'>supported regions</a>
+                </li>
+                <li>
+                    Providing inaccurate account information, including your true first and last name, your complete and accurate mailing address, a working phone number and your email address
+                </li>
+                <li>
+                    Using a service intended to confuse your true IP address or your location
+                </li>
+                <li>
+                    Using a bot, cheat code, macro or other automated method to participate in Microsoft Rewards
+                </li>
+            </ul>
+        </div>
+        <p id="suspendedAccountLearnMore">
+            <a href='https://support.microsoft.com/topic/c5ab735d-c6d9-4bb9-30ad-d828e954b6a9' target='_blank'>Learn more</a> about the Microsoft Rewards program
+        </p>
+    </div>
+
+
+            </main>
+        </div>
+
+        
+    
+
+    </div>
+
+    <div id="site-footer">
+        
+
+<div id="footerArea" class="uhf">
+    <div id="footerRegion">
+            <section role="complementary" aria-labelledby="help-section-heading">
+                <div class="help-footer " data-grid="container pad-12x">
+                    <div>
+                        <h2 id="help-section-heading" class="c-heading-5">Help with Microsoft Rewards</h2>
+                        <hr class="c-divider f-pad-vertical-3x" />
+                        <ul class="c-list f-bare">
+                                    <li>
+                                        <a class="c-hyperlink"
+                                           id="rewards-helplinks-microsoft-rewards-faq"
+                                                                                    href="https://support.microsoft.com/topic/c5ab735d-c6d9-4bb9-30ad-d828e954b6a9"
+                                           aria-label="Find how to resolve common issues"
+                                           target="_blank">
+                                            Find how to resolve common issues
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="c-hyperlink"
+                                           id="rewards-provide-feedback"
+                                                                                    tabindex="0"
+                                            role="button"
+                                           aria-label="Provide feedback"
+                                           target="_self">
+                                            Provide feedback
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="c-hyperlink"
+                                           id="rewards-faq"
+                                                                                    href="/faq"
+                                           aria-label="Learn more about recent changes"
+                                           target="_self">
+                                            Learn more about recent changes
+                                        </a>
+                                    </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+        <div id="footerUniversalFooter">
+            <footer id="uhf-footer" class="c-uhff context-uhf">
+                <div class="c-uhff-base">
+                    <a id="locale-picker-link" aria-label="English (United States)" class="c-uhff-link c-uhff-lang-selector c-glyph glyph-world " href="https://www.bing.com/account/general?ru=https://www.bing.com/rewards&amp;id=language_section#language-section">English (United States)</a>
+                    <nav>
+                        <ul class="c-list f-bare ">
+                                        <li>
+                                            <a class="c-uhff-link"
+                                               id="rewards-footer-privacy"
+                                               href="https://go.microsoft.com/fwlink/?LinkID=521839"
+                                               aria-label="Privacy and Cookies"
+                                               target="_blank">
+                                                Privacy and Cookies
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="c-uhff-link"
+                                               id="rewards-footer-managecookie"
+                                               href="#"
+                                               tabindex="0"
+                                               role="link"
+                                               aria-label="Manage Cookies">
+                                                Manage Cookies
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="c-uhff-link"
+                                               id="rewards-footer-tou"
+                                               href="https://go.microsoft.com/fwlink/?LinkID=530144"
+                                               aria-label="Terms of use"
+                                               target="_blank">
+                                                Terms of use
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="c-uhff-link"
+                                               id="rewards-footer-contact"
+                                               href="https://support.microsoft.com/contactus"
+                                               aria-label="Contact us"
+                                               target="_blank">
+                                                Contact us
+                                            </a>
+                                        </li>
+
+                            <li>&#169; Microsoft 2026</li>
+                        </ul>
+                    </nav>
+                    
+
+
+<script crossorigin="anonymous" type="text/javascript" src="https://msrewardspme.azureedge.net/rewardsuxassets/amcassets/js/htmlsanitizer-6efebc3d01-v2.js" nonce="xWfg6JL9F1JwXv5L/vmcsdskkUvYrn7AOj0O0Y8CtV8="></script>
+<script crossorigin="anonymous" type="text/javascript" src="https://msrewardspme.azureedge.net/rewardsuxassets/amcassets/js/formsanitizing-ef4ae0f98c-v2.js" nonce="xWfg6JL9F1JwXv5L/vmcsdskkUvYrn7AOj0O0Y8CtV8="></script>
+
+<div id="feedback-widget" class="feedback_body">
+    <div id="feedback-container">
+        <div id="feedbackModalShield" class="modalShield hlig">
+        </div>
+        <div id="fbpgdg"
+             role="dialog"
+             aria-modal="true"
+             aria-label="Feedback dialog"
+             class="feedback-dialog hlig"
+             data-fbsource="verbatim">
+            <div id="fbpgdghd" class="hlig">
+                <h2 class=" hlig step1">Feedback about Microsoft Rewards</h2>
+                <h2 class=" hlig thanku" id="title-thanku">Thank You!</h2>
+                <h2 class=" hlig thanku" id="title-sorry">Something went wrong</h2>
+            </div>
+
+
+            <p class="hlig step1">Please provide as many details as you can.&#x200B; Feedbacks will be used to improve the program and to help you find more information​</p>
+            <div class="hlig step1 fbctgcnt"
+                 role="radiogroup"
+                 aria-label="Feedback type">
+                <div class="hlig fbctgctl">
+                    <input id="fbpgdgtp1"
+                           type="radio"
+                           value="1"
+                           name="feedbacktype"
+                           class="hlig"
+                           checked/>
+                    <label for="fbpgdgtp1" class="hlig">
+                        Suggest​
+                    </label>
+                </div>
+                <div class="hlig fbctgctl">
+                    <input id="fbpgdgtp2"
+                           type="radio"
+                           value="2"
+                           name="feedbacktype"
+                           class="hlig" />
+                    <label for="fbpgdgtp2" class="hlig">
+                        Like​
+                    </label>
+                </div>
+                <div class="hlig fbctgctl">
+                    <input id="fbpgdgtp3"
+                           type="radio"
+                           value="3"
+                           name="feedbacktype"
+                           class="hlig" />
+                    <label for="fbpgdgtp3" class="hlig">
+                        Dislike​
+                    </label>
+                </div>
+            </div>
+
+            <p class="hlig step1">Select an area:​</p>
+            <div class="hlig step1 fbctgcnt"
+                 role="radiogroup"
+                 aria-label="Feedback area">
+                <div class="hlig fbctgctl">
+                    <input id="fbpgdgar1"
+                           type="radio"
+                           value="1"
+                           name="feedbackarea"
+                           class="hlig"
+                           checked/>
+                    <label for="fbpgdgar1" class="hlig">
+                        General Feedback​
+                    </label>
+                </div>
+                <div class="hlig fbctgctl">
+                    <input id="fbpgdgar2"
+                           type="radio"
+                           value="2"
+                           name="feedbackarea"
+                           class="hlig" />
+                    <label for="fbpgdgar2" class="hlig">
+                        Points/Streak issue​
+                    </label>
+                </div>
+                <div class="hlig fbctgctl">
+                    <input id="fbpgdgar3"
+                           type="radio"
+                           value="3"
+                           name="feedbackarea"
+                           class="hlig" />
+                    <label for="fbpgdgar3" class="hlig">
+                        Issues with my account​
+                    </label>
+                </div>
+            </div>
+            
+            <div id="fbpgdgtxpnl">
+                <textarea id="fbpgdgtx"
+                          aria-label="Textbox for your feedback. The maximum length is 400."
+                          maxLength="400"
+                          placeholder="Enter your feedback here. To help protect your privacy, don&#x27;t include personal info, like your name or email address.​"
+                          data-err="Please leave a comment.​"
+                          class="hlig step1"
+                          required></textarea>
+                <label for="fbpgdgtx"
+                       id="fbpgdgtx_error"
+                       class="error hlig b_hide">
+                    Please leave a comment.​
+                </label>
+                <div tabIndex={0}
+                     aria-label="Remaining number"
+                     role="contentinfo"
+                     id="fbpgdgtxct"
+                     class="hlig step1">
+                    400
+                </div>
+            </div>
+            <div id="fbpgdgpnl" class="step1">
+                <div id="fbpgdgpnlss" class="inline hlig">
+                    <input id="fbpgdgsschk"
+                           type="checkbox"
+                           name="screenshotAllowed"
+                           class="hlig"
+                           data-collect="IncludeUnchecked" />
+                    <label id="fbpgdgsschklbl"
+                           for="fbpgdgsschk"
+                           class="hlig">
+                        Include a Screenshot​
+                    </label>
+                </div>
+            </div>
+
+            <input id="fbpgdgid" hidden value="32BDD1E875A2EDB5BF4577F6FFFFFFFF"/>
+            <div id="fbpgdgpnlrp" class="hlig step1">
+                <p>
+                    <a id="fbpgdgrplk"
+                       class="hlig"
+                       target="_blank"
+                       href="http://go.microsoft.com/fwlink?LinkId=850876">
+                        Report a concern​
+                    </a>
+                </p>
+            </div>
+            <div id="fbpgdgbtn" class="hlig controls step1">
+                <button id="fbpgdgsbbt"
+                        role="button"
+                        class="inline button hlig">
+                    Send
+                </button>
+                <button id="fbpgdgclbt1"
+                        role="button"
+                        class="inline button hlig">
+                    Cancel
+                </button>
+            </div>
+            <div id="fbpgdgsp" class="hlig">
+                <div class="hlig">
+                    <Image class="hlig rms_img"
+                           alt="Sending..."
+                           src="https://www.bing.com/rp/YMAjFdAOhEC-uxszpfD7wcU3aJE.gif" />
+                    <br class="hlig" />
+                    <span class="hlig">Please wait ...</span>
+                </div>
+            </div>
+            <div id="feedback-status-container" aria-live="assertive" aria-atomic="true">
+                <p id="fbpgdgthnxmsg1" class="thanku" tabindex="-1">
+                    Thank you for helping us making the Microsoft Rewards program better.&#x200B;
+                </p>
+                <p id="fbpgdgthnxmsg2" class="thanku" tabindex="-1">
+                    Thank you for helping us making the Microsoft Rewards program better.&#xD;&#xA;&#xD;&#xA;If you need support to solve an issue related to points or streak, we suggest you to use this 
+                    <a id ="rewards-feedback-support-form" href="/support" aria-label="web form." target="_blank"> web form.</a>
+                </p>
+                <p id="fbpgdgthnxmsg3" class="thanku" tabindex="-1">
+                    Thank you for helping us making the Microsoft Rewards program better.&#xD;&#xA;&#xD;&#xA;If you need support to solve an issue related to your account, we suggest you to use this
+                    <a id ="rewards-feedback-support-form" href="/support" aria-label="web form." target="_blank"> web form.</a>
+                </p>
+                <p id="fbpgdgerrmsg1" class="thanku" tabindex="-1">
+                    You&#x27;ve submitted too many feedback requests in a short time. Please try again later.
+                </p>
+                <p id="fbpgdgerrmsg2" class="thanku" tabindex="-1">
+                    We&#x27;re unable to process feedback requests at this time. Please try again later.
+                </p>
+            </div>
+            <div class="controls step2">
+                <button id="fbpgdgclbt" role="button" class="inline button hlig">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
 
-<script>
-  // Kalau sudah login, langsung ke dashboard
-  if (sessionStorage.getItem('tbUser')) window.location.href = 'dashboard.html';
-
-  const USERS = [
-    { u: 'Bagas',      p: 'admin'     },
-    { u: 'bing lokal', p: 'lokalbing' }
-  ];
-
-  function login() {
-    const u = document.getElementById('u').value.trim();
-    const p = document.getElementById('p').value;
-    const found = USERS.find(x => x.u.toLowerCase() === u.toLowerCase() && x.p === p);
-    if (found) {
-      sessionStorage.setItem('tbUser', found.u);
-      window.location.href = 'dashboard.html';
-    } else {
-      document.getElementById('err').textContent = '✖ Username atau password salah!';
-      document.getElementById('p').value = '';
-      document.getElementById('p').focus();
-    }
-  }
-
-  document.addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
+<script nonce="xWfg6JL9F1JwXv5L/vmcsdskkUvYrn7AOj0O0Y8CtV8=">
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('fbpgdgsbbt').addEventListener('click', () => {
+            onSendFeedback();
+        });
+    });
 </script>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" nonce="xWfg6JL9F1JwXv5L/vmcsdskkUvYrn7AOj0O0Y8CtV8=">
+    document.addEventListener('DOMContentLoaded', () => {
+
+                    document.getElementById('rewards-provide-feedback')?.addEventListener('click', function () {
+                MeePortal.Rewards.FeedbackForm.onFeedbackClickHandler();
+                    });
+                    
+                    // Add keyboard support for Enter key to make the control accessible with keyboard navigation
+                    document.getElementById('rewards-provide-feedback')?.addEventListener('keydown', function (e) {
+                        if (e.key === 'Enter' || e.keyCode === 13) {
+                            e.preventDefault();
+                            MeePortal.Rewards.FeedbackForm.onFeedbackClickHandler();
+                        }
+                    });
+            
+
+                        document.getElementById('rewards-footer-managecookie')?.addEventListener('click', function (evt) {
+                            evt.preventDefault();
+                            
+                manageConsent();
+                
+                                });
+                                
+                        // Add keyboard support for Enter key to make the control accessible with keyboard navigation
+                        document.getElementById('rewards-footer-managecookie')?.addEventListener('keydown', function (evt) {
+                            if (evt.key === 'Enter' || evt.keyCode === 13) {
+                                evt.preventDefault();
+                                
+                manageConsent();
+                
+                            }
+                        });
+                        });
+</script>
+        
+    
+
+    </div>
+
+    
+    
+
+    
+    <script type="text/javascript" crossorigin="anonymous" src="https://msrewardspme.azureedge.net/rewardsuxassets/amcassets/js/aria-webjs-sdk-a54a34c25f-v2.js" nonce="xWfg6JL9F1JwXv5L/vmcsdskkUvYrn7AOj0O0Y8CtV8="></script>
+    <script type="text/javascript" crossorigin="anonymous" src="https://msrewardspme.azureedge.net/rewardsuxassets/amcassets/js/reliability-f5a5966bd9-v2.js" nonce="xWfg6JL9F1JwXv5L/vmcsdskkUvYrn7AOj0O0Y8CtV8="></script>
+    <script type="text/javascript" crossorigin="anonymous" src="https://msrewardspme.azureedge.net/rewardsuxassets/amcassets/js/site-fbb6481d98-v2.js" nonce="xWfg6JL9F1JwXv5L/vmcsdskkUvYrn7AOj0O0Y8CtV8="></script>
+
+    
+
+
+    
+
+<script type="text/javascript" id="portal-telemetry" nonce="xWfg6JL9F1JwXv5L/vmcsdskkUvYrn7AOj0O0Y8CtV8=">
+            (function bootstrapPortalTelemetry() {
+                var providerOptions = {
+                    allowAutoPageView: true,
+                    market: "id",
+                    language: "en-US",
+                    flights: MeePortal.g_userFlights,
+                    features: MeePortal.g_userFeatures,
+                    seedCv: "69d22876917546c48ebe0266264aea39",
+
+                };
+
+                MeePortal.Telemetry.initializePortalTelemetry({
+                    providerOptions: providerOptions,
+                    portalAreaName: "Rewards",
+                    queryStringParametersBlockList: ["assetId","BirthDay","BirthMonth","BirthYear","brokenChildId","childId","childPuid","cid","Country","email","FirstName","Gender","iAltEmail","id","invitationToken","LastName","memberId","memberIdList","MemberName","onBehalfOfPuid","Password","PhoneCountry","PhoneNumber","puid","puids","RetypePassword","slt","t","token","userId","username","BirthDay","BirthMonth","BirthYear","ConnectionToken","Country","FirstName","Gender","LastName","MemberName","Password","Phone","PhoneCountry","PhoneNumber","RetypePassword","assetId","brokenChildId","cid","cip","childCid","childId","childPuid","childsPuid","childsPuidList","e","email","iAltEmail","id","invitationToken","inviteId","ipt","memberIdList","memberId","mstoken","onBehalfOfPuid","puid","puids","rawPhoneNumber","secondaryCode","slt","t","token","userId","username"],
+                    ariaKey: "94f8d95915164be4bdfaa069859dd53e-38b90e46-229c-4b65-821f-eeded01294fb-7430",
+                    env: "prod",
+                    basePath: "",
+                    allowContentView: false,
+                    anid: "32BDD1E875A2EDB5BF4577F6FFFFFFFF",
+                    isAnonymousUser: false,
+                    traceid: "69d22876917546c48ebe0266264aea39",
+                    flights: "rewards3=uaascon,rewards4=bumpsiltrt2,rewards6=experiment1b,rewards8=csmedt2,rewards9=rewgoocoolc",
+                    features: "1mgrid,1minsantwinswp,1mswpv2,1mswpwinv3,1mv4swp,1mvideo,1mwinneranm,1mwinnercard,AnonymousCatalog,bumpsilbnp,bumpsilhva,csmed,EarnReportOpenRedeemPage,FlyoutAccLink,geochgtrm,instantwinic,instantwintb,IsAutoSuggestResultImageEnabled,IsCharityListEnabled,IsChatWithBingFlight,IsDashboardReportBotActivityEnabled,IsDashboardSearchBoxEnabled,IsDropdwnFiltersEnabled,IsExploreOnBingSectionEnabled,IsExploreOnBingTaskProgressInCardEnabled,IsFlyoutSuggestedSearchesEnabled,IsMsaPhoneNumberChallengeFlight,monsugg,monsuggctrl,OneMillionSweepstakeFlight,rdchinacdn,rdchinacdnfo,RewardsClarity,RewardsPointBreakdown,RewardsStatus,Rwgobig,ShowFaq,ShowMyLevel,StarBonusDistribution,StreakProtection,TaskPinning,UETTagging,UseReplacedWelcomePage,winnersmap,feature.uaascon,feature.bumpsiltrt2,feature.experiment1b,feature.csmedt2,feature.rewgoocoolc",
+                });
+            })();
+</script>
+    
+
+
+
+
+
+
+
+<div id="cookieConsentContainer" class="ccanimate" nonce="xWfg6JL9F1JwXv5L/vmcsdskkUvYrn7AOj0O0Y8CtV8=">
+</div>
+
+<script crossorigin="anonymous" src="https://wcpstatic.microsoft.com/mscc/lib/v2/wcp-consent.js" nonce="xWfg6JL9F1JwXv5L/vmcsdskkUvYrn7AOj0O0Y8CtV8="></script>
+
+<script type="text/javascript" nonce="xWfg6JL9F1JwXv5L/vmcsdskkUvYrn7AOj0O0Y8CtV8=">
+    function onConsentChanged(categoryPreferences) {
+        $("#cookieConsentContainer").hide();
+    }
+
+    function manageConsent() {
+        if (window["siteConsent"] && siteConsent.isConsentRequired) {
+            $("#cookieConsentContainer").removeClass("ccanimate");
+            $("#cookieConsentContainer").show();
+            siteConsent.manageConsent();
+        }
+    }
+
+    window.WcpConsent && WcpConsent.init("en-US", "cookieConsentContainer", function (err, _siteConsent) {
+        if (!err) {
+            window.siteConsent = _siteConsent;  //siteConsent is used to get the current consent 
+            var msccCookie=MeePortal.Utilities.getCookie("MSCC");
+
+            if (_siteConsent.isConsentRequired) { 
+                $("#rewards-footer-managecookie").show();
+            }
+
+            if(!msccCookie){
+                $("#cookieConsentContainer").show();
+            }
+        } else {
+            MeePortal.Telemetry.globalErrorLoggingHandler("CookieConsent", err, 29, "")
+        }
+    }, onConsentChanged, WcpConsent.themes.light, "xWfg6JL9F1JwXv5L/vmcsdskkUvYrn7AOj0O0Y8CtV8=");
+</script>    
+
+
 </body>
 </html>
